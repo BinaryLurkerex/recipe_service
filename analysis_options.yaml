@@ -1,0 +1,9 @@
+include: package:flutter_lints/flutter.yaml
+
+dart_code_metrics:
+  extends:
+    - package:dart_code_metrics/presets/all.yaml
+  rules:
+    - arguments-ordering:
+        child-last: true
+    - avoid-banned-imports: false
