@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe/src/presentation/pages/login_page.dart';
 
 class RecipeApp extends StatelessWidget {
   const RecipeApp({super.key});
@@ -15,6 +16,7 @@ class RecipeApp extends StatelessWidget {
           secondary: Colors.orange,
         ),
       ),
+      home: const LoginPage(),
     );
   }
 }
