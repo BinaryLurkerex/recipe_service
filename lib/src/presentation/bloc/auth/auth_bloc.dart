@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,9 +9,18 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(const InitialAuthState()) {
-    on<CheckAuthEvent>(_onCheckAuthEvent);
-    on<LoginAuthEvent>(_onLoginAuthEvent);
-    on<SignupAuthEvent>(_onSignupAuthEvent);
+    on<CheckAuthEvent>(
+      _onCheckAuthEvent,
+      transformer: droppable(),
+    );
+    on<LoginAuthEvent>(
+      _onLoginAuthEvent,
+      transformer: droppable(),
+    );
+    on<SignupAuthEvent>(
+      _onSignupAuthEvent,
+      transformer: droppable(),
+    );
 
     add(const CheckAuthEvent());
   }

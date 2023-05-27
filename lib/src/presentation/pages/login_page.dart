@@ -5,6 +5,8 @@ import 'package:recipe/src/presentation/styles/app_colors.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
+  static const route = '/login';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
