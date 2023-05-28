@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/src/presentation/pages/fav_page.dart';
+import 'package:recipe/src/presentation/pages/bookmarks_page.dart';
 import 'package:recipe/src/presentation/pages/home_page.dart';
 import 'package:recipe/src/presentation/pages/profile_page.dart';
 
@@ -17,7 +17,7 @@ class AppNavBar extends StatelessWidget {
 
     void onOpenFavPageEvent() {
       Navigator.of(context).pushNamedAndRemoveUntil(
-        FavPage.route,
+        BookmarksPage.route,
         (route) => false,
       );
     }

@@ -3,8 +3,8 @@ import 'package:recipe/src/domain/entities/recipe.dart';
 import 'package:recipe/src/presentation/widgets/app_nav_bar.dart';
 import 'package:recipe/src/presentation/widgets/recipe_list_item.dart';
 
-class FavPage extends StatelessWidget {
-  const FavPage({super.key});
+class BookmarksPage extends StatelessWidget {
+  const BookmarksPage({super.key});
 
   static const route = '/bookmarks';
 

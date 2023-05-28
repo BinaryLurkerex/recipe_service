@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/src/presentation/pages/fav_page.dart';
+import 'package:recipe/src/presentation/pages/bookmarks_page.dart';
 import 'package:recipe/src/presentation/pages/home_page.dart';
 import 'package:recipe/src/presentation/pages/initial_page.dart';
 import 'package:recipe/src/presentation/pages/login_page.dart';
@@ -43,8 +43,8 @@ class RecipeApp extends StatelessWidget {
           case HomePage.route:
             return const HomePage();
 
-          case FavPage.route:
-            return const FavPage();
+          case BookmarksPage.route:
+            return const BookmarksPage();
 
           case ProfilePage.route:
             return ProfilePage();
