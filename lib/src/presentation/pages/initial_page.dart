@@ -6,15 +6,17 @@ import 'package:recipe/src/presentation/pages/home_page.dart';
 import 'package:recipe/src/presentation/pages/login_page.dart';
 
 class InitialPage extends StatelessWidget {
-  const InitialPage({super.key});
+  late final AuthBloc authBloc;
+
+  InitialPage({super.key}) {
+    authBloc = services<AuthBloc>();
+    authBloc.add(const CheckAuthEvent());
+  }
 
   static const route = '/';
 
   @override
   Widget build(BuildContext context) {
-    final AuthBloc authBloc = services<AuthBloc>();
-    authBloc.add(const CheckAuthEvent());
-
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         bloc: authBloc,

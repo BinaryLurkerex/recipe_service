@@ -29,7 +29,7 @@ class RecipeApp extends StatelessWidget {
       builder: (context) {
         switch (settings.name) {
           case InitialPage.route:
-            return const InitialPage();
+            return InitialPage();
 
           case LoginPage.route:
             return const LoginPage();
