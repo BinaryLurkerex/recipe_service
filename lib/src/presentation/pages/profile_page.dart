@@ -75,7 +75,7 @@ class ProfilePage extends StatelessWidget {
                       top: 8.0,
                       bottom: 8.0,
                     ),
-                    child: Text(
+                    child: const Text(
                       'Your Recipes',
                       style: TextStyle(
                         fontSize: 20,

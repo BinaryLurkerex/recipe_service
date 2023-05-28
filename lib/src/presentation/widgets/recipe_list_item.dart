@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe/src/domain/entities/recipe.dart';
+import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeListItem extends StatelessWidget {
   final Recipe recipe;
@@ -30,15 +31,15 @@ class RecipeListItem extends StatelessWidget {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.0),
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
-                    Theme.of(context).colorScheme.secondary,
-                    Theme.of(context).colorScheme.secondary.withOpacity(0.75),
+                    AppColors.leftLinear,
+                    AppColors.rightLinear,
                   ],
-                  begin: Alignment.bottomRight,
-                  end: Alignment.topLeft,
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                   tileMode: TileMode.clamp,
-                  stops: const [0.3, 0.6],
+                  stops: [0.3, 0.6],
                 ),
               ),
               child: Row(

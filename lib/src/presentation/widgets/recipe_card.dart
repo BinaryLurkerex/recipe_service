@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe/src/domain/entities/recipe.dart';
+import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeCard extends StatelessWidget {
   final bool? active;
@@ -54,16 +55,7 @@ class RecipeCard extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(32.0),
-              gradient: LinearGradient(
-                colors: [
-                  Theme.of(context).colorScheme.secondary,
-                  Theme.of(context).colorScheme.secondary.withOpacity(0.3),
-                ],
-                begin: Alignment.bottomRight,
-                end: Alignment.topLeft,
-                tileMode: TileMode.clamp,
-                stops: const [0.3, 0.6],
-              ),
+              gradient: AppColors.defaultGradient,
             ),
           ),
           Positioned(
