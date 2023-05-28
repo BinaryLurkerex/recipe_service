@@ -22,8 +22,14 @@ class ProfileHeader extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 48.0,
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 child: Text(
                   user.name.characters.first,
+                  style: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ],
