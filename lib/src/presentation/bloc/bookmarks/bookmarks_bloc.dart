@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:recipe/src/domain/entities/recipe.dart';
 
 part 'bookmarks_event.dart';
 part 'bookmarks_state.dart';
 
+@singleton
 class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
   BookmarksBloc() : super(const LoadingBookmarksState()) {
     on<LoadFirstBookmarksEvent>(_onLoadFirstBookmarksEvent);
@@ -31,6 +33,26 @@ class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
         image: 'fake-name',
         ownerID: 'fake-id',
       ),
+      Recipe(
+        name: 'fake-name',
+        image: 'fake-name',
+        ownerID: 'fake-id',
+      ),
+      Recipe(
+        name: 'fake-name',
+        image: 'fake-name',
+        ownerID: 'fake-id',
+      ),
+      Recipe(
+        name: 'fake-name',
+        image: 'fake-name',
+        ownerID: 'fake-id',
+      ),
+      Recipe(
+        name: 'fake-name',
+        image: 'fake-name',
+        ownerID: 'fake-id',
+      ),
     ];
 
     emit(ListBookmarksState(
@@ -45,6 +67,26 @@ class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
   ) {
     //TODO: implement server loadin`
     List<Recipe> newItems = [
+      Recipe(
+        name: 'fake-name',
+        image: 'fake-name',
+        ownerID: 'fake-id',
+      ),
+      Recipe(
+        name: 'fake-name',
+        image: 'fake-name',
+        ownerID: 'fake-id',
+      ),
+      Recipe(
+        name: 'fake-name',
+        image: 'fake-name',
+        ownerID: 'fake-id',
+      ),
+      Recipe(
+        name: 'fake-name',
+        image: 'fake-name',
+        ownerID: 'fake-id',
+      ),
       Recipe(
         name: 'fake-name',
         image: 'fake-name',

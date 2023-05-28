@@ -21,6 +21,16 @@ class InitialPage extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         bloc: authBloc,
         listener: (context, state) {
+          if (state.message != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  state.message!,
+                ),
+              ),
+            );
+          }
+
           if (state is UnauthorizedAuthState) {
             Navigator.of(context).pushNamedAndRemoveUntil(
               LoginPage.route,

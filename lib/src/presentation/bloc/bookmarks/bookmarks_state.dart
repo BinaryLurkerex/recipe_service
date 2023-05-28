@@ -33,4 +33,7 @@ class ListBookmarksState extends BookmarksState {
       isLast: isLast ?? this.isLast,
     );
   }
+
+  @override
+  List<Object> get props => [recipes, isLast];
 }

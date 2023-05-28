@@ -44,7 +44,7 @@ class RecipeApp extends StatelessWidget {
             return const HomePage();
 
           case BookmarksPage.route:
-            return const BookmarksPage();
+            return BookmarksPage();
 
           case ProfilePage.route:
             return ProfilePage();
