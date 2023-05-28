@@ -12,66 +12,77 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              CircleAvatar(
-                radius: 48.0,
-                backgroundColor: Theme.of(context).colorScheme.secondary,
-                child: Text(
-                  user.name.characters.first,
-                  style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            user.name,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxHeight: 92.0,
-            ),
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Container(
+      alignment: Alignment.center,
+      constraints: const BoxConstraints(
+        maxWidth: 420.0,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
               children: [
-                ProfileDot(
-                  name: 'Posts',
-                  value: '2',
-                ),
-                ProfileDot(
-                  name: 'Posts',
-                  value: '2',
-                ),
-                ProfileDot(
-                  name: 'Posts',
-                  value: '2',
+                CircleAvatar(
+                  radius: 48.0,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  child: Text(
+                    user.name.characters.first,
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              user.name,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxHeight: 92.0,
+              ),
+              child: const Row(
+                children: [
+                  Expanded(
+                    child: ProfileDot(
+                      name: 'Posts',
+                      value: '2',
+                    ),
+                  ),
+                  Expanded(
+                    child: ProfileDot(
+                      name: 'Following',
+                      value: '2',
+                    ),
+                  ),
+                  Expanded(
+                    child: ProfileDot(
+                      name: 'Followers',
+                      value: '2',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

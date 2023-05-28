@@ -64,14 +64,14 @@ class ProfilePage extends StatelessWidget {
           builder: (context, state) {
             if (state is UserProfileState) {
               return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProfileHeader(
                     user: state.user,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      left: 32.0,
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    padding: const EdgeInsets.only(
+                      left: 64.0,
                       top: 8.0,
                       bottom: 8.0,
                     ),
