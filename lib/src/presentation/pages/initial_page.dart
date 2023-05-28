@@ -22,14 +22,12 @@ class InitialPage extends StatelessWidget {
         bloc: authBloc,
         listener: (context, state) {
           if (state is UnauthorizedAuthState) {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
+            Navigator.of(context).pushNamedAndRemoveUntil(
               LoginPage.route,
               (route) => false,
             );
           } else if (state is AuthorizedAuthState) {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
+            Navigator.of(context).pushNamedAndRemoveUntil(
               HomePage.route,
               (route) => false,
             );
