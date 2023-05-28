@@ -29,37 +29,40 @@ class AppNavBar extends StatelessWidget {
       );
     }
 
-    return Container(
-      height: 92.0,
-      alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 32.0,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(
-            icon: const Icon(
-              Icons.home_filled,
+    return Hero(
+      tag: 'nav-bar',
+      child: Container(
+        height: 92.0,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 32.0,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: const Icon(
+                Icons.home_filled,
+              ),
+              color: Colors.black87,
+              onPressed: onOpenHomePageEvent,
             ),
-            color: Colors.black87,
-            onPressed: onOpenHomePageEvent,
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.bookmark_rounded,
+            IconButton(
+              icon: const Icon(
+                Icons.bookmark_rounded,
+              ),
+              color: Colors.black87,
+              onPressed: onOpenFavPageEvent,
             ),
-            color: Colors.black87,
-            onPressed: onOpenFavPageEvent,
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.person_rounded,
+            IconButton(
+              icon: const Icon(
+                Icons.person_rounded,
+              ),
+              color: Colors.black87,
+              onPressed: onOpenProfilePageEvent,
             ),
-            color: Colors.black87,
-            onPressed: onOpenProfilePageEvent,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
