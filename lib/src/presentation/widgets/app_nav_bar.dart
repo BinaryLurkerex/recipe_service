@@ -3,8 +3,8 @@ import 'package:recipe/src/presentation/pages/fav_page.dart';
 import 'package:recipe/src/presentation/pages/home_page.dart';
 import 'package:recipe/src/presentation/pages/profile_page.dart';
 
-class RecipeNavBar extends StatelessWidget {
-  const RecipeNavBar({super.key});
+class AppNavBar extends StatelessWidget {
+  const AppNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {

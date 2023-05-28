@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:recipe/src/domain/entities/recipe.dart';
 import 'package:recipe/src/presentation/widgets/recipe_card.dart';
 
-class RecipeScroll extends StatefulWidget {
+class RecipeCardsScroll extends StatefulWidget {
   final List<Recipe> recipes;
 
-  const RecipeScroll({
+  const RecipeCardsScroll({
     required this.recipes,
     super.key,
   });
 
   @override
-  State<RecipeScroll> createState() => _RecipeScrollState();
+  State<RecipeCardsScroll> createState() => _RecipeCardsScrollState();
 }
 
-class _RecipeScrollState extends State<RecipeScroll> {
+class _RecipeCardsScrollState extends State<RecipeCardsScroll> {
   final PageController pageController = PageController(viewportFraction: 0.75);
 
   int currentPage = 0;

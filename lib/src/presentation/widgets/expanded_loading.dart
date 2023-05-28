@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ExpandedLoading extends StatelessWidget {
+  const ExpandedLoading({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Expanded(

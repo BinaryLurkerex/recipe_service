@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/src/presentation/widgets/recipe_nav_bar.dart';
+import 'package:recipe/src/presentation/widgets/app_nav_bar.dart';
 
 class FavPage extends StatelessWidget {
   const FavPage({super.key});
@@ -35,7 +35,7 @@ class FavPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const RecipeNavBar(),
+      bottomNavigationBar: const AppNavBar(),
     );
   }
 }

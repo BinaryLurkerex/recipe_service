@@ -47,7 +47,7 @@ class RecipeApp extends StatelessWidget {
             return const FavPage();
 
           case ProfilePage.route:
-            return const ProfilePage();
+            return ProfilePage();
         }
 
         return const NotFoundPage();
