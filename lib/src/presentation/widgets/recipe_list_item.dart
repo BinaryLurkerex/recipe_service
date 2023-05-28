@@ -16,10 +16,10 @@ class RecipeListItem extends StatelessWidget {
       height: 92.0,
       child: Stack(
         children: [
+          // TODO: fix error drop
           // Image.network(
           //   recipe.image,
           //   fit: BoxFit.fill,
-          //   //TODO: fix error drop
           //   errorBuilder: (context, error, stackTrace) {
           //     return Image.asset(
           //       'assets/images/image-not-available.png',

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe/core/injector/injector.dart';
-import 'package:recipe/src/presentation/bloc/auth/auth_bloc.dart';
+import 'package:recipe/src/presentation/bloc/auth_bloc.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
 import 'package:recipe/src/router.gr.dart';
 
@@ -15,19 +15,14 @@ class LoginPage extends StatelessWidget {
     authBloc = services<AuthBloc>();
   }
 
-  static const route = '/login';
-
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailEditingController =
-        TextEditingController();
-    final TextEditingController usernameEditingController =
-        TextEditingController();
-    final TextEditingController passwordEditingController =
-        TextEditingController();
+    final TextEditingController emailEditingController = TextEditingController();
+    final TextEditingController usernameEditingController = TextEditingController();
+    final TextEditingController passwordEditingController = TextEditingController();
 
     void onSignupEvent() {
-      authBloc.add(SignupAuthEvent(
+      authBloc.add(AuthEvent.signup(
         email: emailEditingController.text,
         username: usernameEditingController.text,
         password: passwordEditingController.text,
@@ -35,23 +30,28 @@ class LoginPage extends StatelessWidget {
     }
 
     void onLoginEvent() {
-      authBloc.add(LoginAuthEvent(
-        username: usernameEditingController.text,
+      authBloc.add(AuthEvent.login(
+        email: emailEditingController.text,
         password: passwordEditingController.text,
       ));
+    }
+
+    void onAuthStateChanged(BuildContext context, AuthState state) {
+      state.map(
+        initial: (state) => null,
+        unauthorized: (state) => null,
+        authorized: (state) {
+          AutoRouter.of(context).replace(
+            const HomeRoute(),
+          );
+        },
+      );
     }
 
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         bloc: authBloc,
-        listener: (context, state) {
-          if (state is AuthorizedAuthState) {
-            AutoRouter.of(context).pushAndPopUntil(
-              const HomeRoute(),
-              predicate: (_) => false,
-            );
-          }
-        },
+        listener: onAuthStateChanged,
         child: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(32),
