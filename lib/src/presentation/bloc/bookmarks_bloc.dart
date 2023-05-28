@@ -1,5 +1,3 @@
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,16 +23,11 @@ abstract class BookmarksEvent with _$BookmarksEvent {
 
 @injectable
 class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
-  BookmarksBloc() : super(const BookmarksState.loading());
-
-  @override
-  void onEvent(BookmarksEvent event) {
-    event.map(load: _onLoadEvent);
-
-    super.onEvent(event);
+  BookmarksBloc() : super(const BookmarksState.loading()) {
+    on<LoadBookmarksEvent>(_onLoadEvent);
   }
 
-  FutureOr<void> _onLoadEvent(LoadBookmarksEvent event) async {
+  FutureOr<void> _onLoadEvent(LoadBookmarksEvent event, Emitter<BookmarksState> emit) async {
     const Recipe fake = Recipe(
       name: 'fake-name',
       image: 'fake-name',

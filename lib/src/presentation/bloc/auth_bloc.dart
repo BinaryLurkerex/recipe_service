@@ -1,5 +1,3 @@
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,30 +31,23 @@ abstract class AuthEvent with _$AuthEvent {
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(const AuthState.initial());
-
-  @override
-  void onEvent(AuthEvent event) {
-    event.map(
-      refresh: _onRefreshEvent,
-      signup: _onSignupEvent,
-      login: _onloginEvent,
-    );
-
-    super.onEvent(event);
+  AuthBloc() : super(const AuthState.initial()) {
+    on<RefreshAuthEvent>(_onRefreshEvent);
+    on<SignupAuthEvent>(_onSignupEvent);
+    on<LoginAuthEvent>(_onloginEvent);
   }
 
-  FutureOr<void> _onRefreshEvent(RefreshAuthEvent state) {
+  FutureOr<void> _onRefreshEvent(RefreshAuthEvent event, Emitter<AuthState> emit) {
     emit(const AuthState.unauthorized());
   }
 
-  FutureOr<void> _onSignupEvent(SignupAuthEvent state) {
+  FutureOr<void> _onSignupEvent(SignupAuthEvent event, Emitter<AuthState> emit) {
     emit(const AuthState.authorized(
       session: 'fake-session-key',
     ));
   }
 
-  FutureOr<void> _onloginEvent(LoginAuthEvent state) {
+  FutureOr<void> _onloginEvent(LoginAuthEvent event, Emitter<AuthState> emit) {
     emit(const AuthState.authorized(
       session: 'fake-session-key',
     ));

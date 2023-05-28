@@ -24,16 +24,11 @@ abstract class ProfileEvent with _$ProfileEvent {
 
 @injectable
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  ProfileBloc() : super(const ProfileState.loading());
-
-  @override
-  void onEvent(ProfileEvent event) {
-    event.map(refresh: _onRefreshEvent);
-
-    super.onEvent(event);
+  ProfileBloc() : super(const ProfileState.loading()) {
+    on<RefreshProfileEvent>(_onRefreshEvent);
   }
 
-  Future<void> _onRefreshEvent(RefreshProfileEvent state) async {
+  FutureOr<void> _onRefreshEvent(RefreshProfileEvent event, Emitter<ProfileState> emit) async {
     emit(const ProfileState.loading());
 
     await Future.delayed(const Duration(seconds: 1));
