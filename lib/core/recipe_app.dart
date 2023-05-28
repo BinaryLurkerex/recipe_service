@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:recipe/src/presentation/pages/fav_page.dart';
 import 'package:recipe/src/presentation/pages/home_page.dart';
 import 'package:recipe/src/presentation/pages/initial_page.dart';
 import 'package:recipe/src/presentation/pages/login_page.dart';
 import 'package:recipe/src/presentation/pages/not_found.dart';
+import 'package:recipe/src/presentation/pages/profile_page.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeApp extends StatelessWidget {
@@ -27,6 +29,8 @@ class RecipeApp extends StatelessWidget {
   }
 
   Route? _onGenerateRoute(RouteSettings settings) {
+    debugPrint('GET ${settings.name}');
+
     return MaterialPageRoute(
       builder: (context) {
         switch (settings.name) {
@@ -38,6 +42,12 @@ class RecipeApp extends StatelessWidget {
 
           case HomePage.route:
             return const HomePage();
+
+          case FavPage.route:
+            return const FavPage();
+
+          case ProfilePage.route:
+            return const ProfilePage();
         }
 
         return const NotFoundPage();
