@@ -24,7 +24,6 @@ class _RecipeCardsScrollState extends State<RecipeCardsScroll> {
     super.initState();
 
     pageController.addListener(() {
-      print('test');
       int position = pageController.page!.round();
       if (currentPage != position) {
         {
