@@ -3,6 +3,7 @@ import 'package:recipe/src/presentation/pages/home_page.dart';
 import 'package:recipe/src/presentation/pages/initial_page.dart';
 import 'package:recipe/src/presentation/pages/login_page.dart';
 import 'package:recipe/src/presentation/pages/not_found.dart';
+import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeApp extends StatelessWidget {
   const RecipeApp({super.key});
@@ -16,7 +17,8 @@ class RecipeApp extends StatelessWidget {
         brightness: Brightness.light,
         fontFamily: 'SFProText',
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: Colors.orange,
+          secondary: AppColors.secondaryColor,
+          background: AppColors.backgroundColor,
         ),
       ),
       initialRoute: InitialPage.route,
