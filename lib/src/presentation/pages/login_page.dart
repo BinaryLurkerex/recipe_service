@@ -1,11 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe/core/injector/injector.dart';
 import 'package:recipe/src/presentation/bloc/auth/auth_bloc.dart';
-import 'package:recipe/src/presentation/pages/home_page.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
+import 'package:recipe/src/router.gr.dart';
 
+@RoutePage()
 class LoginPage extends StatelessWidget {
   late final AuthBloc authBloc;
 
@@ -44,9 +46,9 @@ class LoginPage extends StatelessWidget {
         bloc: authBloc,
         listener: (context, state) {
           if (state is AuthorizedAuthState) {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              HomePage.route,
-              (route) => false,
+            AutoRouter.of(context).pushAndPopUntil(
+              const HomeRoute(),
+              predicate: (_) => false,
             );
           }
         },

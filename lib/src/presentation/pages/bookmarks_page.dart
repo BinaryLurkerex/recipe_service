@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/core/injector/injector.dart';
@@ -5,14 +6,13 @@ import 'package:recipe/src/presentation/bloc/bookmarks/bookmarks_bloc.dart';
 import 'package:recipe/src/presentation/widgets/app_nav_bar.dart';
 import 'package:recipe/src/presentation/widgets/recipe_list_item.dart';
 
+@RoutePage()
 class BookmarksPage extends StatelessWidget {
   late final BookmarksBloc bookmarksBloc;
 
   BookmarksPage({super.key}) {
     bookmarksBloc = services<BookmarksBloc>();
   }
-
-  static const route = '/bookmarks';
 
   @override
   Widget build(BuildContext context) {

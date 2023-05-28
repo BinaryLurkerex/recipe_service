@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/src/presentation/pages/bookmarks_page.dart';
-import 'package:recipe/src/presentation/pages/home_page.dart';
-import 'package:recipe/src/presentation/pages/initial_page.dart';
-import 'package:recipe/src/presentation/pages/login_page.dart';
-import 'package:recipe/src/presentation/pages/not_found.dart';
-import 'package:recipe/src/presentation/pages/profile_page.dart';
+import 'package:recipe/core/injector/injector.dart';
+import 'package:recipe/src/router.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeApp extends StatelessWidget {
@@ -12,8 +8,8 @@ class RecipeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Recipe',
+    return MaterialApp.router(
+      title: 'Recipe Service',
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
@@ -23,35 +19,7 @@ class RecipeApp extends StatelessWidget {
           background: AppColors.backgroundColor,
         ),
       ),
-      initialRoute: InitialPage.route,
-      onGenerateRoute: _onGenerateRoute,
-    );
-  }
-
-  Route? _onGenerateRoute(RouteSettings settings) {
-    debugPrint('GET ${settings.name}');
-
-    return MaterialPageRoute(
-      builder: (context) {
-        switch (settings.name) {
-          case InitialPage.route:
-            return InitialPage();
-
-          case LoginPage.route:
-            return LoginPage();
-
-          case HomePage.route:
-            return const HomePage();
-
-          case BookmarksPage.route:
-            return BookmarksPage();
-
-          case ProfilePage.route:
-            return ProfilePage();
-        }
-
-        return const NotFoundPage();
-      },
+      routerConfig: services<AppRouter>().config(),
     );
   }
 }

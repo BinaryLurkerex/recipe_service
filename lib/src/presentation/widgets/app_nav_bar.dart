@@ -1,7 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe/src/presentation/pages/bookmarks_page.dart';
-import 'package:recipe/src/presentation/pages/home_page.dart';
-import 'package:recipe/src/presentation/pages/profile_page.dart';
+import 'package:recipe/src/router.gr.dart';
 
 class AppNavBar extends StatelessWidget {
   const AppNavBar({super.key});
@@ -9,23 +8,20 @@ class AppNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void onOpenHomePageEvent() {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-        HomePage.route,
-        (route) => false,
+      AutoRouter.of(context).replace(
+        const HomeRoute(),
       );
     }
 
     void onOpenFavPageEvent() {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-        BookmarksPage.route,
-        (route) => false,
+      AutoRouter.of(context).replace(
+        BookmarksRoute(),
       );
     }
 
     void onOpenProfilePageEvent() {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-        ProfilePage.route,
-        (route) => false,
+      AutoRouter.of(context).replace(
+        ProfileRoute(),
       );
     }
 

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/core/injector/injector.dart';
@@ -7,14 +8,13 @@ import 'package:recipe/src/presentation/widgets/recipe_list_item.dart';
 import 'package:recipe/src/presentation/widgets/app_nav_bar.dart';
 import 'package:recipe/src/presentation/widgets/profile_header.dart';
 
+@RoutePage()
 class ProfilePage extends StatelessWidget {
   late final ProfileBloc profileBloc;
 
   ProfilePage({super.key}) {
     profileBloc = services<ProfileBloc>();
   }
-
-  static const route = '/profile';
 
   @override
   Widget build(BuildContext context) {

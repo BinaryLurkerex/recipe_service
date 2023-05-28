@@ -1,22 +1,22 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/core/injector/injector.dart';
 import 'package:recipe/src/presentation/bloc/auth/auth_bloc.dart';
-import 'package:recipe/src/presentation/pages/home_page.dart';
-import 'package:recipe/src/presentation/pages/login_page.dart';
+import 'package:recipe/src/router.gr.dart';
 
+@RoutePage()
 class InitialPage extends StatelessWidget {
   late final AuthBloc authBloc;
 
   InitialPage({super.key}) {
     authBloc = services<AuthBloc>();
-    authBloc.add(const CheckAuthEvent());
   }
-
-  static const route = '/';
 
   @override
   Widget build(BuildContext context) {
+    authBloc.add(const CheckAuthEvent());
+
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         bloc: authBloc,
@@ -32,14 +32,12 @@ class InitialPage extends StatelessWidget {
           }
 
           if (state is UnauthorizedAuthState) {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              LoginPage.route,
-              (route) => false,
+            AutoRouter.of(context).replace(
+              LoginRoute(),
             );
           } else if (state is AuthorizedAuthState) {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              HomePage.route,
-              (route) => false,
+            AutoRouter.of(context).replace(
+              const HomeRoute(),
             );
           }
         },

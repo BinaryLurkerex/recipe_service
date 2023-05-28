@@ -1,10 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
 
+@RoutePage()
 class NotFoundPage extends StatelessWidget {
   const NotFoundPage({super.key});
-
-  static const route = '/404';
 
   @override
   Widget build(BuildContext context) {
