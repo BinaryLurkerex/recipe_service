@@ -13,9 +13,6 @@ class RecipeCard extends StatelessWidget {
     this.recipe,
   }) : super(key: key);
 
-  static const notFoundImageUrl =
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637';
-
   @override
   Widget build(BuildContext context) {
     final double blur = active! ? 16 : 0;
@@ -41,15 +38,19 @@ class RecipeCard extends StatelessWidget {
             offset: Offset(0, offset),
           )
         ],
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: NetworkImage(
-            recipe?.image ?? notFoundImageUrl,
-          ),
-        ),
       ),
       child: Stack(
         children: [
+          Image.network(
+            recipe!.image,
+            fit: BoxFit.fill,
+            errorBuilder: (context, error, stackTrace) {
+              return Image.asset(
+                'assets/images/image-not-available.png',
+                color: Colors.black87,
+              );
+            },
+          ),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(32),

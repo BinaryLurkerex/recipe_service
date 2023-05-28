@@ -28,6 +28,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/fonts/
+    - assets/images/
     - assets/svg/
   fonts:
     - family: SFProText

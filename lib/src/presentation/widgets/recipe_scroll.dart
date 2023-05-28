@@ -24,6 +24,7 @@ class _RecipeScrollState extends State<RecipeScroll> {
     super.initState();
 
     pageController.addListener(() {
+      print('test');
       int position = pageController.page!.round();
       if (currentPage != position) {
         {
@@ -44,8 +45,9 @@ class _RecipeScrollState extends State<RecipeScroll> {
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         bool active = index == currentPage;
+
         return Opacity(
-          opacity: currentPage == index ? 1.0 : 0.5,
+          opacity: currentPage == index ? 1.0 : 0.75,
           child: RecipeCard(
             active: active,
             index: index,

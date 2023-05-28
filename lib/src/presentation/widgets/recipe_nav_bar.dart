@@ -7,6 +7,7 @@ class RecipeNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 92.0,
+      alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(
         horizontal: 32.0,
       ),
