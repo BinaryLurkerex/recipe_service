@@ -3,7 +3,15 @@ include: package:flutter_lints/flutter.yaml
 dart_code_metrics:
   extends:
     - package:dart_code_metrics/presets/all.yaml
+  metrics-exclude:
+    - test/**
+    - '*.config.dart'
+    - '*.g.dart'
   rules:
     - arguments-ordering:
         child-last: true
     - avoid-banned-imports: false
+  rules-exclude:
+    - test/**
+    - '*.config.dart'
+    - '*.g.dart'

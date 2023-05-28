@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe/core/injector/injector.dart';
 import 'package:recipe/src/presentation/bloc/auth/auth_bloc.dart';
 import 'package:recipe/src/presentation/pages/home_page.dart';
 import 'package:recipe/src/presentation/pages/login_page.dart';
-import 'package:recipe/src/presentation/widgets/expanded_loading.dart';
 
 class InitialPage extends StatelessWidget {
   const InitialPage({super.key});
@@ -12,7 +12,8 @@ class InitialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authBloc = BlocProvider.of<AuthBloc>(context);
+    final AuthBloc authBloc = services<AuthBloc>();
+    authBloc.add(const CheckAuthEvent());
 
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
@@ -32,7 +33,11 @@ class InitialPage extends StatelessWidget {
             );
           }
         },
-        child: ExpandedLoading(),
+        child: const Center(
+          child: CircularProgressIndicator(
+            strokeWidth: 1.0,
+          ),
+        ),
       ),
     );
   }

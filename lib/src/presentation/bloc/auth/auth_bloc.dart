@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
+@singleton
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(const InitialAuthState()) {
     on<CheckAuthEvent>(
@@ -21,17 +23,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       _onSignupAuthEvent,
       transformer: droppable(),
     );
-
-    add(const CheckAuthEvent());
   }
 
   FutureOr<void> _onCheckAuthEvent(
     CheckAuthEvent event,
     Emitter<AuthState> emit,
   ) {
-    emit(const AuthorizedAuthState(
-      session: 'fake-session-key',
-    ));
+    emit(const UnauthorizedAuthState());
   }
 
   FutureOr<void> _onLoginAuthEvent(
