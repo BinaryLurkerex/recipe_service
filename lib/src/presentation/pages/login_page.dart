@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe/core/injector/injector.dart';
 import 'package:recipe/src/presentation/bloc/auth_bloc.dart';
+import 'package:recipe/src/presentation/dialogs/connect_dialog.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 @RoutePage()
@@ -19,19 +22,37 @@ class LoginPage extends StatelessWidget {
     final TextEditingController usernameEditingController = TextEditingController();
     final TextEditingController passwordEditingController = TextEditingController();
 
-    void onSignupEvent() {
-      authBloc.add(AuthEvent.signup(
-        email: emailEditingController.text,
-        username: usernameEditingController.text,
-        password: passwordEditingController.text,
-      ));
+    FutureOr<void> onSignupEvent(BuildContext context) async {
+      final connect = await showDialog<bool?>(
+        context: context,
+        builder: (_) {
+          return const ConnectDialog();
+        },
+      );
+
+      if (connect == true) {
+        authBloc.add(AuthEvent.signup(
+          email: emailEditingController.text,
+          username: usernameEditingController.text,
+          password: passwordEditingController.text,
+        ));
+      }
     }
 
-    void onLoginEvent() {
-      authBloc.add(AuthEvent.login(
-        email: emailEditingController.text,
-        password: passwordEditingController.text,
-      ));
+    FutureOr<void> onLoginEvent(BuildContext context) async {
+      final connect = await showDialog<bool?>(
+        context: context,
+        builder: (_) {
+          return const ConnectDialog();
+        },
+      );
+
+      if (connect == true) {
+        authBloc.add(AuthEvent.login(
+          email: emailEditingController.text,
+          password: passwordEditingController.text,
+        ));
+      }
     }
 
     return Scaffold(
@@ -85,7 +106,7 @@ class LoginPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     GestureDetector(
-                      onTap: onSignupEvent,
+                      onTap: () => onSignupEvent(context),
                       child: Container(
                         padding: const EdgeInsets.all(8.0),
                         decoration: BoxDecoration(
@@ -115,7 +136,7 @@ class LoginPage extends StatelessWidget {
                       height: 8.0,
                     ),
                     GestureDetector(
-                      onTap: onLoginEvent,
+                      onTap: () => onLoginEvent(context),
                       child: Container(
                         padding: const EdgeInsets.all(8.0),
                         decoration: BoxDecoration(
