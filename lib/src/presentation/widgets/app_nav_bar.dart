@@ -1,64 +1,59 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe/src/router.gr.dart';
+import 'package:recipe/core/injector/injector.dart';
+import 'package:recipe/src/presentation/bloc/page_bloc.dart';
 
 class AppNavBar extends StatelessWidget {
-  const AppNavBar({super.key});
+  late final PageBloc pageBloc;
+
+  AppNavBar({super.key}) {
+    pageBloc = services<PageBloc>();
+  }
 
   @override
   Widget build(BuildContext context) {
-    void onOpenHomePageEvent() {
-      AutoRouter.of(context).replace(
-        const HomeRoute(),
-      );
-    }
-
-    void onOpenFavPageEvent() {
-      AutoRouter.of(context).replace(
-        BookmarksRoute(),
-      );
-    }
-
-    void onOpenProfilePageEvent() {
-      AutoRouter.of(context).replace(
-        ProfileRoute(),
-      );
-    }
-
-    return Hero(
-      tag: 'nav-bar',
-      child: Container(
-        height: 92.0,
-        alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 32.0,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: const Icon(
-                Icons.home_filled,
-              ),
-              color: Colors.black87,
-              onPressed: onOpenHomePageEvent,
+    return Container(
+      height: 92.0,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 32.0,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          IconButton(
+            icon: const Icon(
+              Icons.home_filled,
             ),
-            IconButton(
-              icon: const Icon(
-                Icons.bookmark_rounded,
-              ),
-              color: Colors.black87,
-              onPressed: onOpenFavPageEvent,
+            color: Colors.black87,
+            onPressed: () {
+              pageBloc.add(const PageEvent.open(
+                value: 0,
+              ));
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.bookmark_rounded,
             ),
-            IconButton(
-              icon: const Icon(
-                Icons.person_rounded,
-              ),
-              color: Colors.black87,
-              onPressed: onOpenProfilePageEvent,
+            color: Colors.black87,
+            onPressed: () {
+              pageBloc.add(const PageEvent.open(
+                value: 1,
+              ));
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.person_rounded,
             ),
-          ],
-        ),
+            color: Colors.black87,
+            onPressed: () {
+              pageBloc.add(const PageEvent.open(
+                value: 2,
+              ));
+            },
+          ),
+        ],
       ),
     );
   }

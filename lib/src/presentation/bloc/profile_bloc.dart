@@ -22,7 +22,7 @@ abstract class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.refresh() = RefreshProfileEvent;
 }
 
-@injectable
+@singleton
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(const ProfileState.loading()) {
     on<RefreshProfileEvent>(_onRefreshEvent);

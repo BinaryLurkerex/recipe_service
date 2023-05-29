@@ -3,25 +3,26 @@ import 'package:recipe/src/domain/entities/recipe.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeCard extends StatelessWidget {
-  final bool? active;
-  final int? index;
-  final Recipe? recipe;
+  final int index;
+  final bool isActive;
+  final Recipe recipe;
 
   const RecipeCard({
     Key? key,
-    this.active,
-    this.index,
-    this.recipe,
+    required this.index,
+    required this.isActive,
+    required this.recipe,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final double blur = active! ? 16.0 : 0.0;
-    final double offset = active! ? 4.0 : 0.0;
-    final double top = active! ? 0.0 : 42.0;
-    final double left = active! ? 32.0 : 0.0;
+    final double blur = isActive ? 16.0 : 0.0;
+    final double offset = isActive ? 4.0 : 0.0;
+    final double top = isActive ? 0.0 : 42.0;
+    final double left = isActive ? 32.0 : 0.0;
 
     return AnimatedContainer(
+      // height: MediaQuery.of(context).size.height * 0.60,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeOutQuint,
       margin: EdgeInsets.only(
@@ -31,7 +32,7 @@ class RecipeCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32.0),
-        color: Theme.of(context).colorScheme.secondary,
+        // color: Theme.of(context).colorScheme.secondary,
         boxShadow: [
           BoxShadow(
             color: Colors.black87.withOpacity(0.1),
@@ -65,14 +66,14 @@ class RecipeCard extends StatelessWidget {
               padding: const EdgeInsets.all(
                 16.0,
               ),
-              decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary,
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(32.0),
-                    bottomRight: Radius.circular(32.0),
-                  )),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(32.0),
+                  bottomRight: Radius.circular(32.0),
+                ),
+              ),
               child: Text(
-                recipe!.name,
+                recipe.name,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: const TextStyle(

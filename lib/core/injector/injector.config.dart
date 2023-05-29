@@ -13,7 +13,9 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:recipe/src/presentation/bloc/auth_bloc.dart' as _i4;
 import 'package:recipe/src/presentation/bloc/bookmarks_bloc.dart' as _i5;
-import 'package:recipe/src/presentation/bloc/profile_bloc.dart' as _i6;
+import 'package:recipe/src/presentation/bloc/home_bloc.dart' as _i6;
+import 'package:recipe/src/presentation/bloc/page_bloc.dart' as _i7;
+import 'package:recipe/src/presentation/bloc/profile_bloc.dart' as _i8;
 import 'package:recipe/src/router.dart' as _i3;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -28,9 +30,11 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     gh.singleton<_i3.AppRouter>(_i3.AppRouter());
-    gh.factory<_i4.AuthBloc>(() => _i4.AuthBloc());
-    gh.factory<_i5.BookmarksBloc>(() => _i5.BookmarksBloc());
-    gh.factory<_i6.ProfileBloc>(() => _i6.ProfileBloc());
+    gh.singleton<_i4.AuthBloc>(_i4.AuthBloc());
+    gh.singleton<_i5.BookmarksBloc>(_i5.BookmarksBloc());
+    gh.singleton<_i6.HomeBloc>(_i6.HomeBloc());
+    gh.singleton<_i7.PageBloc>(_i7.PageBloc());
+    gh.singleton<_i8.ProfileBloc>(_i8.ProfileBloc());
     return this;
   }
 }

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/core/injector/injector.dart';
 import 'package:recipe/src/presentation/bloc/auth_bloc.dart';
-import 'package:recipe/src/router.gr.dart';
+import 'package:recipe/src/presentation/pages/app_page.dart';
+import 'package:recipe/src/presentation/pages/views/home_view.dart';
+import 'package:recipe/src/presentation/pages/login_page.dart';
 
 @RoutePage()
 class InitialPage extends StatelessWidget {
@@ -14,34 +16,28 @@ class InitialPage extends StatelessWidget {
     authBloc.add(const AuthEvent.refresh());
   }
 
-  void onAuthBlocStateChange(BuildContext context, AuthState state) {
-    state.map(
-      initial: (state) => null,
-      unauthorized: (state) {
-        AutoRouter.of(context).replace(
-          LoginRoute(),
-        );
-      },
-      authorized: (state) {
-        AutoRouter.of(context).replace(
-          const HomeRoute(),
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<AuthBloc, AuthState>(
+      body: BlocBuilder<AuthBloc, AuthState>(
         bloc: authBloc,
-        listener: onAuthBlocStateChange,
-        // listener: (_, state) => onAuthBlocStateChange(context, state),
-        child: const Center(
-          child: CircularProgressIndicator(
-            strokeWidth: 1.0,
-          ),
-        ),
+        builder: (context, state) {
+          return state.map(
+            initial: (state) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  strokeWidth: 1.0,
+                ),
+              );
+            },
+            unauthorized: (state) {
+              return LoginPage();
+            },
+            authorized: (state) {
+              return AppPage();
+            },
+          );
+        },
       ),
     );
   }

@@ -41,9 +41,9 @@ class LoginPage extends StatelessWidget {
         initial: (state) => null,
         unauthorized: (state) => null,
         authorized: (state) {
-          AutoRouter.of(context).replace(
-            const HomeRoute(),
-          );
+          // AutoRouter.of(context).replace(
+          //   const HomeRoute(),
+          // );
         },
       );
     }

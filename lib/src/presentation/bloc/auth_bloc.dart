@@ -29,7 +29,7 @@ abstract class AuthEvent with _$AuthEvent {
   }) = LoginAuthEvent;
 }
 
-@injectable
+@singleton
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(const AuthState.initial()) {
     on<RefreshAuthEvent>(_onRefreshEvent);

@@ -12,7 +12,7 @@ abstract class BookmarksState with _$BookmarksState {
   const factory BookmarksState.loading() = LoadingBookmarksState;
   const factory BookmarksState.data({
     required List<Recipe> recipes,
-    bool? isLastLoaded,
+    required bool isLastLoaded,
   }) = DataBookmarksState;
 }
 
@@ -21,7 +21,7 @@ abstract class BookmarksEvent with _$BookmarksEvent {
   const factory BookmarksEvent.load() = LoadBookmarksEvent;
 }
 
-@injectable
+@singleton
 class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
   BookmarksBloc() : super(const BookmarksState.loading()) {
     on<LoadBookmarksEvent>(_onLoadEvent);
@@ -39,10 +39,15 @@ class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
     await Future.delayed(const Duration(seconds: 1), () {
       state.map(
         loading: (state) {
-          emit(const BookmarksState.data(recipes: [fake]));
+          emit(const BookmarksState.data(
+            recipes: [fake],
+            isLastLoaded: false,
+          ));
         },
         data: (state) {
-          emit(state.copyWith(recipes: state.recipes + [fake]));
+          emit(state.copyWith(
+            recipes: state.recipes + [fake],
+          ));
         },
       );
     });

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'bookmarks_bloc.dart';
+part of 'home_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,63 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$BookmarksState {
+mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes, bool isLastLoaded) data,
+    required TResult Function(
+            int currentRecipe, List<Recipe> recipes, bool isLastLoaded)
+        data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes, bool isLastLoaded)? data,
+    TResult? Function(
+            int currentRecipe, List<Recipe> recipes, bool isLastLoaded)?
+        data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes, bool isLastLoaded)? data,
+    TResult Function(
+            int currentRecipe, List<Recipe> recipes, bool isLastLoaded)?
+        data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadingBookmarksState value) loading,
-    required TResult Function(DataBookmarksState value) data,
+    required TResult Function(LoadingHomeState value) loading,
+    required TResult Function(DataHomeState value) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingBookmarksState value)? loading,
-    TResult? Function(DataBookmarksState value)? data,
+    TResult? Function(LoadingHomeState value)? loading,
+    TResult? Function(DataHomeState value)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingBookmarksState value)? loading,
-    TResult Function(DataBookmarksState value)? data,
+    TResult Function(LoadingHomeState value)? loading,
+    TResult Function(DataHomeState value)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BookmarksStateCopyWith<$Res> {
-  factory $BookmarksStateCopyWith(
-          BookmarksState value, $Res Function(BookmarksState) then) =
-      _$BookmarksStateCopyWithImpl<$Res, BookmarksState>;
+abstract class $HomeStateCopyWith<$Res> {
+  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
+      _$HomeStateCopyWithImpl<$Res, HomeState>;
 }
 
 /// @nodoc
-class _$BookmarksStateCopyWithImpl<$Res, $Val extends BookmarksState>
-    implements $BookmarksStateCopyWith<$Res> {
-  _$BookmarksStateCopyWithImpl(this._value, this._then);
+class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
+    implements $HomeStateCopyWith<$Res> {
+  _$HomeStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -75,35 +80,35 @@ class _$BookmarksStateCopyWithImpl<$Res, $Val extends BookmarksState>
 }
 
 /// @nodoc
-abstract class _$$LoadingBookmarksStateCopyWith<$Res> {
-  factory _$$LoadingBookmarksStateCopyWith(_$LoadingBookmarksState value,
-          $Res Function(_$LoadingBookmarksState) then) =
-      __$$LoadingBookmarksStateCopyWithImpl<$Res>;
+abstract class _$$LoadingHomeStateCopyWith<$Res> {
+  factory _$$LoadingHomeStateCopyWith(
+          _$LoadingHomeState value, $Res Function(_$LoadingHomeState) then) =
+      __$$LoadingHomeStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingBookmarksStateCopyWithImpl<$Res>
-    extends _$BookmarksStateCopyWithImpl<$Res, _$LoadingBookmarksState>
-    implements _$$LoadingBookmarksStateCopyWith<$Res> {
-  __$$LoadingBookmarksStateCopyWithImpl(_$LoadingBookmarksState _value,
-      $Res Function(_$LoadingBookmarksState) _then)
+class __$$LoadingHomeStateCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$LoadingHomeState>
+    implements _$$LoadingHomeStateCopyWith<$Res> {
+  __$$LoadingHomeStateCopyWithImpl(
+      _$LoadingHomeState _value, $Res Function(_$LoadingHomeState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingBookmarksState implements LoadingBookmarksState {
-  const _$LoadingBookmarksState();
+class _$LoadingHomeState implements LoadingHomeState {
+  const _$LoadingHomeState();
 
   @override
   String toString() {
-    return 'BookmarksState.loading()';
+    return 'HomeState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingBookmarksState);
+        (other.runtimeType == runtimeType && other is _$LoadingHomeState);
   }
 
   @override
@@ -113,7 +118,9 @@ class _$LoadingBookmarksState implements LoadingBookmarksState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes, bool isLastLoaded) data,
+    required TResult Function(
+            int currentRecipe, List<Recipe> recipes, bool isLastLoaded)
+        data,
   }) {
     return loading();
   }
@@ -122,7 +129,9 @@ class _$LoadingBookmarksState implements LoadingBookmarksState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes, bool isLastLoaded)? data,
+    TResult? Function(
+            int currentRecipe, List<Recipe> recipes, bool isLastLoaded)?
+        data,
   }) {
     return loading?.call();
   }
@@ -131,7 +140,9 @@ class _$LoadingBookmarksState implements LoadingBookmarksState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes, bool isLastLoaded)? data,
+    TResult Function(
+            int currentRecipe, List<Recipe> recipes, bool isLastLoaded)?
+        data,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -143,8 +154,8 @@ class _$LoadingBookmarksState implements LoadingBookmarksState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadingBookmarksState value) loading,
-    required TResult Function(DataBookmarksState value) data,
+    required TResult Function(LoadingHomeState value) loading,
+    required TResult Function(DataHomeState value) data,
   }) {
     return loading(this);
   }
@@ -152,8 +163,8 @@ class _$LoadingBookmarksState implements LoadingBookmarksState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingBookmarksState value)? loading,
-    TResult? Function(DataBookmarksState value)? data,
+    TResult? Function(LoadingHomeState value)? loading,
+    TResult? Function(DataHomeState value)? data,
   }) {
     return loading?.call(this);
   }
@@ -161,8 +172,8 @@ class _$LoadingBookmarksState implements LoadingBookmarksState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingBookmarksState value)? loading,
-    TResult Function(DataBookmarksState value)? data,
+    TResult Function(LoadingHomeState value)? loading,
+    TResult Function(DataHomeState value)? data,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -172,34 +183,39 @@ class _$LoadingBookmarksState implements LoadingBookmarksState {
   }
 }
 
-abstract class LoadingBookmarksState implements BookmarksState {
-  const factory LoadingBookmarksState() = _$LoadingBookmarksState;
+abstract class LoadingHomeState implements HomeState {
+  const factory LoadingHomeState() = _$LoadingHomeState;
 }
 
 /// @nodoc
-abstract class _$$DataBookmarksStateCopyWith<$Res> {
-  factory _$$DataBookmarksStateCopyWith(_$DataBookmarksState value,
-          $Res Function(_$DataBookmarksState) then) =
-      __$$DataBookmarksStateCopyWithImpl<$Res>;
+abstract class _$$DataHomeStateCopyWith<$Res> {
+  factory _$$DataHomeStateCopyWith(
+          _$DataHomeState value, $Res Function(_$DataHomeState) then) =
+      __$$DataHomeStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Recipe> recipes, bool isLastLoaded});
+  $Res call({int currentRecipe, List<Recipe> recipes, bool isLastLoaded});
 }
 
 /// @nodoc
-class __$$DataBookmarksStateCopyWithImpl<$Res>
-    extends _$BookmarksStateCopyWithImpl<$Res, _$DataBookmarksState>
-    implements _$$DataBookmarksStateCopyWith<$Res> {
-  __$$DataBookmarksStateCopyWithImpl(
-      _$DataBookmarksState _value, $Res Function(_$DataBookmarksState) _then)
+class __$$DataHomeStateCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$DataHomeState>
+    implements _$$DataHomeStateCopyWith<$Res> {
+  __$$DataHomeStateCopyWithImpl(
+      _$DataHomeState _value, $Res Function(_$DataHomeState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? currentRecipe = null,
     Object? recipes = null,
     Object? isLastLoaded = null,
   }) {
-    return _then(_$DataBookmarksState(
+    return _then(_$DataHomeState(
+      currentRecipe: null == currentRecipe
+          ? _value.currentRecipe
+          : currentRecipe // ignore: cast_nullable_to_non_nullable
+              as int,
       recipes: null == recipes
           ? _value._recipes
           : recipes // ignore: cast_nullable_to_non_nullable
@@ -214,11 +230,15 @@ class __$$DataBookmarksStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DataBookmarksState implements DataBookmarksState {
-  const _$DataBookmarksState(
-      {required final List<Recipe> recipes, required this.isLastLoaded})
+class _$DataHomeState implements DataHomeState {
+  const _$DataHomeState(
+      {required this.currentRecipe,
+      required final List<Recipe> recipes,
+      required this.isLastLoaded})
       : _recipes = recipes;
 
+  @override
+  final int currentRecipe;
   final List<Recipe> _recipes;
   @override
   List<Recipe> get recipes {
@@ -232,57 +252,64 @@ class _$DataBookmarksState implements DataBookmarksState {
 
   @override
   String toString() {
-    return 'BookmarksState.data(recipes: $recipes, isLastLoaded: $isLastLoaded)';
+    return 'HomeState.data(currentRecipe: $currentRecipe, recipes: $recipes, isLastLoaded: $isLastLoaded)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataBookmarksState &&
+            other is _$DataHomeState &&
+            (identical(other.currentRecipe, currentRecipe) ||
+                other.currentRecipe == currentRecipe) &&
             const DeepCollectionEquality().equals(other._recipes, _recipes) &&
             (identical(other.isLastLoaded, isLastLoaded) ||
                 other.isLastLoaded == isLastLoaded));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_recipes), isLastLoaded);
+  int get hashCode => Object.hash(runtimeType, currentRecipe,
+      const DeepCollectionEquality().hash(_recipes), isLastLoaded);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataBookmarksStateCopyWith<_$DataBookmarksState> get copyWith =>
-      __$$DataBookmarksStateCopyWithImpl<_$DataBookmarksState>(
-          this, _$identity);
+  _$$DataHomeStateCopyWith<_$DataHomeState> get copyWith =>
+      __$$DataHomeStateCopyWithImpl<_$DataHomeState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes, bool isLastLoaded) data,
+    required TResult Function(
+            int currentRecipe, List<Recipe> recipes, bool isLastLoaded)
+        data,
   }) {
-    return data(recipes, isLastLoaded);
+    return data(currentRecipe, recipes, isLastLoaded);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes, bool isLastLoaded)? data,
+    TResult? Function(
+            int currentRecipe, List<Recipe> recipes, bool isLastLoaded)?
+        data,
   }) {
-    return data?.call(recipes, isLastLoaded);
+    return data?.call(currentRecipe, recipes, isLastLoaded);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes, bool isLastLoaded)? data,
+    TResult Function(
+            int currentRecipe, List<Recipe> recipes, bool isLastLoaded)?
+        data,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(recipes, isLastLoaded);
+      return data(currentRecipe, recipes, isLastLoaded);
     }
     return orElse();
   }
@@ -290,8 +317,8 @@ class _$DataBookmarksState implements DataBookmarksState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadingBookmarksState value) loading,
-    required TResult Function(DataBookmarksState value) data,
+    required TResult Function(LoadingHomeState value) loading,
+    required TResult Function(DataHomeState value) data,
   }) {
     return data(this);
   }
@@ -299,8 +326,8 @@ class _$DataBookmarksState implements DataBookmarksState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingBookmarksState value)? loading,
-    TResult? Function(DataBookmarksState value)? data,
+    TResult? Function(LoadingHomeState value)? loading,
+    TResult? Function(DataHomeState value)? data,
   }) {
     return data?.call(this);
   }
@@ -308,8 +335,8 @@ class _$DataBookmarksState implements DataBookmarksState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingBookmarksState value)? loading,
-    TResult Function(DataBookmarksState value)? data,
+    TResult Function(LoadingHomeState value)? loading,
+    TResult Function(DataHomeState value)? data,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -319,20 +346,22 @@ class _$DataBookmarksState implements DataBookmarksState {
   }
 }
 
-abstract class DataBookmarksState implements BookmarksState {
-  const factory DataBookmarksState(
-      {required final List<Recipe> recipes,
-      required final bool isLastLoaded}) = _$DataBookmarksState;
+abstract class DataHomeState implements HomeState {
+  const factory DataHomeState(
+      {required final int currentRecipe,
+      required final List<Recipe> recipes,
+      required final bool isLastLoaded}) = _$DataHomeState;
 
+  int get currentRecipe;
   List<Recipe> get recipes;
   bool get isLastLoaded;
   @JsonKey(ignore: true)
-  _$$DataBookmarksStateCopyWith<_$DataBookmarksState> get copyWith =>
+  _$$DataHomeStateCopyWith<_$DataHomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$BookmarksEvent {
+mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
@@ -351,33 +380,32 @@ mixin _$BookmarksEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadBookmarksEvent value) load,
+    required TResult Function(LoadHomeEvent value) load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadBookmarksEvent value)? load,
+    TResult? Function(LoadHomeEvent value)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadBookmarksEvent value)? load,
+    TResult Function(LoadHomeEvent value)? load,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BookmarksEventCopyWith<$Res> {
-  factory $BookmarksEventCopyWith(
-          BookmarksEvent value, $Res Function(BookmarksEvent) then) =
-      _$BookmarksEventCopyWithImpl<$Res, BookmarksEvent>;
+abstract class $HomeEventCopyWith<$Res> {
+  factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
+      _$HomeEventCopyWithImpl<$Res, HomeEvent>;
 }
 
 /// @nodoc
-class _$BookmarksEventCopyWithImpl<$Res, $Val extends BookmarksEvent>
-    implements $BookmarksEventCopyWith<$Res> {
-  _$BookmarksEventCopyWithImpl(this._value, this._then);
+class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
+    implements $HomeEventCopyWith<$Res> {
+  _$HomeEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -386,35 +414,35 @@ class _$BookmarksEventCopyWithImpl<$Res, $Val extends BookmarksEvent>
 }
 
 /// @nodoc
-abstract class _$$LoadBookmarksEventCopyWith<$Res> {
-  factory _$$LoadBookmarksEventCopyWith(_$LoadBookmarksEvent value,
-          $Res Function(_$LoadBookmarksEvent) then) =
-      __$$LoadBookmarksEventCopyWithImpl<$Res>;
+abstract class _$$LoadHomeEventCopyWith<$Res> {
+  factory _$$LoadHomeEventCopyWith(
+          _$LoadHomeEvent value, $Res Function(_$LoadHomeEvent) then) =
+      __$$LoadHomeEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadBookmarksEventCopyWithImpl<$Res>
-    extends _$BookmarksEventCopyWithImpl<$Res, _$LoadBookmarksEvent>
-    implements _$$LoadBookmarksEventCopyWith<$Res> {
-  __$$LoadBookmarksEventCopyWithImpl(
-      _$LoadBookmarksEvent _value, $Res Function(_$LoadBookmarksEvent) _then)
+class __$$LoadHomeEventCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$LoadHomeEvent>
+    implements _$$LoadHomeEventCopyWith<$Res> {
+  __$$LoadHomeEventCopyWithImpl(
+      _$LoadHomeEvent _value, $Res Function(_$LoadHomeEvent) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadBookmarksEvent implements LoadBookmarksEvent {
-  const _$LoadBookmarksEvent();
+class _$LoadHomeEvent implements LoadHomeEvent {
+  const _$LoadHomeEvent();
 
   @override
   String toString() {
-    return 'BookmarksEvent.load()';
+    return 'HomeEvent.load()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadBookmarksEvent);
+        (other.runtimeType == runtimeType && other is _$LoadHomeEvent);
   }
 
   @override
@@ -451,7 +479,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadBookmarksEvent value) load,
+    required TResult Function(LoadHomeEvent value) load,
   }) {
     return load(this);
   }
@@ -459,7 +487,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadBookmarksEvent value)? load,
+    TResult? Function(LoadHomeEvent value)? load,
   }) {
     return load?.call(this);
   }
@@ -467,7 +495,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadBookmarksEvent value)? load,
+    TResult Function(LoadHomeEvent value)? load,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -477,6 +505,6 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   }
 }
 
-abstract class LoadBookmarksEvent implements BookmarksEvent {
-  const factory LoadBookmarksEvent() = _$LoadBookmarksEvent;
+abstract class LoadHomeEvent implements HomeEvent {
+  const factory LoadHomeEvent() = _$LoadHomeEvent;
 }
