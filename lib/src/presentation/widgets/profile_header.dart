@@ -62,19 +62,19 @@ class ProfileHeader extends StatelessWidget {
                   Expanded(
                     child: ProfileDot(
                       name: 'Posts',
-                      value: '2',
+                      value: '0',
                     ),
                   ),
                   Expanded(
                     child: ProfileDot(
                       name: 'Following',
-                      value: '2',
+                      value: '0',
                     ),
                   ),
                   Expanded(
                     child: ProfileDot(
                       name: 'Followers',
-                      value: '2',
+                      value: '0',
                     ),
                   ),
                 ],

@@ -46,7 +46,7 @@ class HomeView extends StatelessWidget {
               return Center(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxHeight: MediaQuery.of(context).size.height * 0.4,
+                    maxHeight: MediaQuery.of(context).size.height * 0.6,
                   ),
                   child: _HomePageScroll(
                     state: state,
@@ -80,8 +80,18 @@ class _HomePageScroll extends StatelessWidget {
       itemBuilder: (context, index) {
         bool active = (state.currentRecipe == index);
 
-        return Opacity(
-          opacity: active ? 1.0 : 0.75,
+        return GestureDetector(
+          onTap: () {
+            if (index < state.currentRecipe) {
+              services<HomeBloc>().add(
+                const HomeEvent.prev(),
+              );
+            } else if (index > state.currentRecipe) {
+              services<HomeBloc>().add(
+                const HomeEvent.next(),
+              );
+            }
+          },
           child: RecipeCard(
             isActive: active,
             index: index,

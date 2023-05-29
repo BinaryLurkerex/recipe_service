@@ -19,37 +19,55 @@ abstract class BookmarksState with _$BookmarksState {
 @freezed
 abstract class BookmarksEvent with _$BookmarksEvent {
   const factory BookmarksEvent.load() = LoadBookmarksEvent;
+  const factory BookmarksEvent.add({
+    required Recipe recipe,
+  }) = AddBookmarksEvent;
 }
 
 @singleton
 class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
   BookmarksBloc() : super(const BookmarksState.loading()) {
     on<LoadBookmarksEvent>(_onLoadEvent);
+    on<AddBookmarksEvent>(_onAddEvent);
   }
 
-  FutureOr<void> _onLoadEvent(LoadBookmarksEvent event, Emitter<BookmarksState> emit) async {
-    const Recipe fake = Recipe(
-      name: 'fake-name',
-      image: 'fake-name',
-      ownerID: 'fake-id',
-    );
+  //! DEPRECATED
+  //TODO: NEEDS TO RETRIVE FROM SERVER
+  List<Recipe> _favRecipes = [];
 
+  FutureOr<void> _onLoadEvent(LoadBookmarksEvent event, Emitter<BookmarksState> emit) async {
     emit(const BookmarksState.loading());
 
-    await Future.delayed(const Duration(seconds: 1), () {
-      state.map(
-        loading: (state) {
-          emit(const BookmarksState.data(
-            recipes: [fake],
-            isLastLoaded: false,
-          ));
-        },
-        data: (state) {
+    state.map(
+      loading: (state) {
+        emit(BookmarksState.data(
+          recipes: _favRecipes,
+          isLastLoaded: true,
+        ));
+      },
+      data: (state) {
+        if (!state.isLastLoaded) {
+          //TODO: ADD CHECK WITH SERVER VALUES
+          // if (state.recipes != _favRecipes) {
+          //   emit(
+          //     DataBookmarksState(
+          //       recipes: _favRecipes,
+          //       isLastLoaded: true,
+          //     ),
+          //   );
+          // }
+        } else {
+          //TODO: ADD STREAM LOADING FROM SERVER
           emit(state.copyWith(
-            recipes: state.recipes + [fake],
+            recipes: state.recipes, // + [nextRecipes],
           ));
-        },
-      );
-    });
+        }
+      },
+    );
+  }
+
+  FutureOr<void> _onAddEvent(event, Emitter<BookmarksState> emit) {
+    //TODO: IMPL SERVER METHOD
+    _favRecipes.add(event.recipe);
   }
 }

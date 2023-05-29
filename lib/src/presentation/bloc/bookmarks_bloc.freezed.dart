@@ -336,32 +336,38 @@ mixin _$BookmarksEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
+    required TResult Function(Recipe recipe) add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
+    TResult? Function(Recipe recipe)? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
+    TResult Function(Recipe recipe)? add,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadBookmarksEvent value) load,
+    required TResult Function(AddBookmarksEvent value) add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadBookmarksEvent value)? load,
+    TResult? Function(AddBookmarksEvent value)? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadBookmarksEvent value)? load,
+    TResult Function(AddBookmarksEvent value)? add,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -424,6 +430,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
+    required TResult Function(Recipe recipe) add,
   }) {
     return load();
   }
@@ -432,6 +439,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
+    TResult? Function(Recipe recipe)? add,
   }) {
     return load?.call();
   }
@@ -440,6 +448,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
+    TResult Function(Recipe recipe)? add,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -452,6 +461,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadBookmarksEvent value) load,
+    required TResult Function(AddBookmarksEvent value) add,
   }) {
     return load(this);
   }
@@ -460,6 +470,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadBookmarksEvent value)? load,
+    TResult? Function(AddBookmarksEvent value)? add,
   }) {
     return load?.call(this);
   }
@@ -468,6 +479,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadBookmarksEvent value)? load,
+    TResult Function(AddBookmarksEvent value)? add,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -479,4 +491,138 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
 
 abstract class LoadBookmarksEvent implements BookmarksEvent {
   const factory LoadBookmarksEvent() = _$LoadBookmarksEvent;
+}
+
+/// @nodoc
+abstract class _$$AddBookmarksEventCopyWith<$Res> {
+  factory _$$AddBookmarksEventCopyWith(
+          _$AddBookmarksEvent value, $Res Function(_$AddBookmarksEvent) then) =
+      __$$AddBookmarksEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Recipe recipe});
+}
+
+/// @nodoc
+class __$$AddBookmarksEventCopyWithImpl<$Res>
+    extends _$BookmarksEventCopyWithImpl<$Res, _$AddBookmarksEvent>
+    implements _$$AddBookmarksEventCopyWith<$Res> {
+  __$$AddBookmarksEventCopyWithImpl(
+      _$AddBookmarksEvent _value, $Res Function(_$AddBookmarksEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? recipe = null,
+  }) {
+    return _then(_$AddBookmarksEvent(
+      recipe: null == recipe
+          ? _value.recipe
+          : recipe // ignore: cast_nullable_to_non_nullable
+              as Recipe,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddBookmarksEvent implements AddBookmarksEvent {
+  const _$AddBookmarksEvent({required this.recipe});
+
+  @override
+  final Recipe recipe;
+
+  @override
+  String toString() {
+    return 'BookmarksEvent.add(recipe: $recipe)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddBookmarksEvent &&
+            (identical(other.recipe, recipe) || other.recipe == recipe));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, recipe);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddBookmarksEventCopyWith<_$AddBookmarksEvent> get copyWith =>
+      __$$AddBookmarksEventCopyWithImpl<_$AddBookmarksEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(Recipe recipe) add,
+  }) {
+    return add(recipe);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(Recipe recipe)? add,
+  }) {
+    return add?.call(recipe);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(Recipe recipe)? add,
+    required TResult orElse(),
+  }) {
+    if (add != null) {
+      return add(recipe);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadBookmarksEvent value) load,
+    required TResult Function(AddBookmarksEvent value) add,
+  }) {
+    return add(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadBookmarksEvent value)? load,
+    TResult? Function(AddBookmarksEvent value)? add,
+  }) {
+    return add?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadBookmarksEvent value)? load,
+    TResult Function(AddBookmarksEvent value)? add,
+    required TResult orElse(),
+  }) {
+    if (add != null) {
+      return add(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddBookmarksEvent implements BookmarksEvent {
+  const factory AddBookmarksEvent({required final Recipe recipe}) =
+      _$AddBookmarksEvent;
+
+  Recipe get recipe;
+  @JsonKey(ignore: true)
+  _$$AddBookmarksEventCopyWith<_$AddBookmarksEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }

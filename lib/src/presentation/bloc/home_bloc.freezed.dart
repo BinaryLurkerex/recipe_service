@@ -365,32 +365,44 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
+    required TResult Function() next,
+    required TResult Function() prev,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
+    TResult? Function()? next,
+    TResult? Function()? prev,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
+    TResult Function()? next,
+    TResult Function()? prev,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadHomeEvent value) load,
+    required TResult Function(NextHomeEvent value) next,
+    required TResult Function(PrevHomeEvent value) prev,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadHomeEvent value)? load,
+    TResult? Function(NextHomeEvent value)? next,
+    TResult? Function(PrevHomeEvent value)? prev,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadHomeEvent value)? load,
+    TResult Function(NextHomeEvent value)? next,
+    TResult Function(PrevHomeEvent value)? prev,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -452,6 +464,8 @@ class _$LoadHomeEvent implements LoadHomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
+    required TResult Function() next,
+    required TResult Function() prev,
   }) {
     return load();
   }
@@ -460,6 +474,8 @@ class _$LoadHomeEvent implements LoadHomeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
+    TResult? Function()? next,
+    TResult? Function()? prev,
   }) {
     return load?.call();
   }
@@ -468,6 +484,8 @@ class _$LoadHomeEvent implements LoadHomeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
+    TResult Function()? next,
+    TResult Function()? prev,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -480,6 +498,8 @@ class _$LoadHomeEvent implements LoadHomeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadHomeEvent value) load,
+    required TResult Function(NextHomeEvent value) next,
+    required TResult Function(PrevHomeEvent value) prev,
   }) {
     return load(this);
   }
@@ -488,6 +508,8 @@ class _$LoadHomeEvent implements LoadHomeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadHomeEvent value)? load,
+    TResult? Function(NextHomeEvent value)? next,
+    TResult? Function(PrevHomeEvent value)? prev,
   }) {
     return load?.call(this);
   }
@@ -496,6 +518,8 @@ class _$LoadHomeEvent implements LoadHomeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadHomeEvent value)? load,
+    TResult Function(NextHomeEvent value)? next,
+    TResult Function(PrevHomeEvent value)? prev,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -507,4 +531,220 @@ class _$LoadHomeEvent implements LoadHomeEvent {
 
 abstract class LoadHomeEvent implements HomeEvent {
   const factory LoadHomeEvent() = _$LoadHomeEvent;
+}
+
+/// @nodoc
+abstract class _$$NextHomeEventCopyWith<$Res> {
+  factory _$$NextHomeEventCopyWith(
+          _$NextHomeEvent value, $Res Function(_$NextHomeEvent) then) =
+      __$$NextHomeEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NextHomeEventCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$NextHomeEvent>
+    implements _$$NextHomeEventCopyWith<$Res> {
+  __$$NextHomeEventCopyWithImpl(
+      _$NextHomeEvent _value, $Res Function(_$NextHomeEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NextHomeEvent implements NextHomeEvent {
+  const _$NextHomeEvent();
+
+  @override
+  String toString() {
+    return 'HomeEvent.next()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NextHomeEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function() next,
+    required TResult Function() prev,
+  }) {
+    return next();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function()? next,
+    TResult? Function()? prev,
+  }) {
+    return next?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function()? next,
+    TResult Function()? prev,
+    required TResult orElse(),
+  }) {
+    if (next != null) {
+      return next();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadHomeEvent value) load,
+    required TResult Function(NextHomeEvent value) next,
+    required TResult Function(PrevHomeEvent value) prev,
+  }) {
+    return next(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadHomeEvent value)? load,
+    TResult? Function(NextHomeEvent value)? next,
+    TResult? Function(PrevHomeEvent value)? prev,
+  }) {
+    return next?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadHomeEvent value)? load,
+    TResult Function(NextHomeEvent value)? next,
+    TResult Function(PrevHomeEvent value)? prev,
+    required TResult orElse(),
+  }) {
+    if (next != null) {
+      return next(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NextHomeEvent implements HomeEvent {
+  const factory NextHomeEvent() = _$NextHomeEvent;
+}
+
+/// @nodoc
+abstract class _$$PrevHomeEventCopyWith<$Res> {
+  factory _$$PrevHomeEventCopyWith(
+          _$PrevHomeEvent value, $Res Function(_$PrevHomeEvent) then) =
+      __$$PrevHomeEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PrevHomeEventCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$PrevHomeEvent>
+    implements _$$PrevHomeEventCopyWith<$Res> {
+  __$$PrevHomeEventCopyWithImpl(
+      _$PrevHomeEvent _value, $Res Function(_$PrevHomeEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PrevHomeEvent implements PrevHomeEvent {
+  const _$PrevHomeEvent();
+
+  @override
+  String toString() {
+    return 'HomeEvent.prev()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PrevHomeEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function() next,
+    required TResult Function() prev,
+  }) {
+    return prev();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function()? next,
+    TResult? Function()? prev,
+  }) {
+    return prev?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function()? next,
+    TResult Function()? prev,
+    required TResult orElse(),
+  }) {
+    if (prev != null) {
+      return prev();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadHomeEvent value) load,
+    required TResult Function(NextHomeEvent value) next,
+    required TResult Function(PrevHomeEvent value) prev,
+  }) {
+    return prev(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadHomeEvent value)? load,
+    TResult? Function(NextHomeEvent value)? next,
+    TResult? Function(PrevHomeEvent value)? prev,
+  }) {
+    return prev?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadHomeEvent value)? load,
+    TResult Function(NextHomeEvent value)? next,
+    TResult Function(PrevHomeEvent value)? prev,
+    required TResult orElse(),
+  }) {
+    if (prev != null) {
+      return prev(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PrevHomeEvent implements HomeEvent {
+  const factory PrevHomeEvent() = _$PrevHomeEvent;
 }

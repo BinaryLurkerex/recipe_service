@@ -34,8 +34,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     await Future.delayed(const Duration(seconds: 1));
     emit(const ProfileState.user(
       user: User(
-        id: 'fake-id',
-        name: 'John Doe',
+        id: 'ghost-id',
+        name: 'Ghost',
+        email: 'ghost@example.com',
       ),
     ));
   }
