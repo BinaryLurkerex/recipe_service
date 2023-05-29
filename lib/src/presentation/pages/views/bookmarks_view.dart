@@ -109,6 +109,14 @@ class _BookmarksPageData extends StatelessWidget {
           ),
           child: RecipeListItem(
             recipe: state.recipes.elementAt(index),
+            icon: Icons.highlight_remove_rounded,
+            onIconPressed: () {
+              services<BookmarksBloc>().add(
+                BookmarksEvent.del(
+                  id: state.recipes.elementAt(index).id,
+                ),
+              );
+            },
           ),
         );
       },

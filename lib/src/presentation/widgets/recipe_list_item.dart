@@ -4,10 +4,14 @@ import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeListItem extends StatelessWidget {
   final Recipe recipe;
+  final IconData icon;
+  final Function()? onIconPressed;
 
   const RecipeListItem({
     super.key,
     required this.recipe,
+    required this.icon,
+    this.onIconPressed,
   });
 
   @override
@@ -52,33 +56,23 @@ class RecipeListItem extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.bookmark_outline_rounded,
+                          Expanded(
+                            child: Text(
+                              recipe.name,
+                              textAlign: TextAlign.left,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: const TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87,
                               ),
-                              Text(
-                                '2',
-                                textAlign: TextAlign.right,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
-                          Text(
-                            recipe.name,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            style: const TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
+                          IconButton(
+                            onPressed: onIconPressed,
+                            icon: Icon(
+                              icon,
                             ),
                           ),
                         ],

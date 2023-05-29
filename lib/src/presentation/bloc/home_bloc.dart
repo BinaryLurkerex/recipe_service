@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:recipe/src/domain/entities/recipe.dart';
+
+// ignore: depend_on_referenced_packages
 import 'package:lorem_ipsum/lorem_ipsum.dart';
 
 part 'home_bloc.freezed.dart';
@@ -39,7 +41,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       recipes: List.generate(
         20,
         (index) => Recipe(
-          id: 'fake-id',
+          id: 'fake-id-$index',
           owner: 'fake-owner',
           name: loremIpsum(words: 4),
           image: 'fake-image',
