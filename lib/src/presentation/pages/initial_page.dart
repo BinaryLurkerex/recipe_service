@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/core/injector/injector.dart';
 import 'package:recipe/src/presentation/bloc/auth_bloc.dart';
 import 'package:recipe/src/presentation/pages/app_page.dart';
-import 'package:recipe/src/presentation/pages/views/home_view.dart';
 import 'package:recipe/src/presentation/pages/login_page.dart';
 
 @RoutePage()

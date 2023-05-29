@@ -44,7 +44,7 @@ class RecipeCard extends StatelessWidget {
       child: Stack(
         children: [
           Image.network(
-            recipe!.image,
+            recipe.image,
             fit: BoxFit.fill,
             errorBuilder: (context, error, stackTrace) {
               return Image.asset(
