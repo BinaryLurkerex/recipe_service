@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/core/injector/injector.dart';
 import 'package:recipe/src/domain/entities/recipe.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
 

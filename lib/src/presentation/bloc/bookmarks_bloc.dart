@@ -36,8 +36,7 @@ class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
   }
 
   //! DEPRECATED
-  //TODO: NEEDS TO RETRIVE FROM SERVER
-  List<Recipe> _favRecipes = [];
+  final List<Recipe> _favRecipes = [];
 
   FutureOr<void> _onLoadEvent(LoadBookmarksEvent event, Emitter<BookmarksState> emit) async {
     emit(const BookmarksState.loading());
