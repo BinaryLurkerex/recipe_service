@@ -337,18 +337,21 @@ mixin _$BookmarksEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(Recipe recipe) add,
+    required TResult Function(String id) del,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(Recipe recipe)? add,
+    TResult? Function(String id)? del,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(Recipe recipe)? add,
+    TResult Function(String id)? del,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -356,18 +359,21 @@ mixin _$BookmarksEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadBookmarksEvent value) load,
     required TResult Function(AddBookmarksEvent value) add,
+    required TResult Function(DelBookmarksEvent value) del,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadBookmarksEvent value)? load,
     TResult? Function(AddBookmarksEvent value)? add,
+    TResult? Function(DelBookmarksEvent value)? del,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadBookmarksEvent value)? load,
     TResult Function(AddBookmarksEvent value)? add,
+    TResult Function(DelBookmarksEvent value)? del,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -431,6 +437,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(Recipe recipe) add,
+    required TResult Function(String id) del,
   }) {
     return load();
   }
@@ -440,6 +447,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(Recipe recipe)? add,
+    TResult? Function(String id)? del,
   }) {
     return load?.call();
   }
@@ -449,6 +457,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(Recipe recipe)? add,
+    TResult Function(String id)? del,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -462,6 +471,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadBookmarksEvent value) load,
     required TResult Function(AddBookmarksEvent value) add,
+    required TResult Function(DelBookmarksEvent value) del,
   }) {
     return load(this);
   }
@@ -471,6 +481,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadBookmarksEvent value)? load,
     TResult? Function(AddBookmarksEvent value)? add,
+    TResult? Function(DelBookmarksEvent value)? del,
   }) {
     return load?.call(this);
   }
@@ -480,6 +491,7 @@ class _$LoadBookmarksEvent implements LoadBookmarksEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadBookmarksEvent value)? load,
     TResult Function(AddBookmarksEvent value)? add,
+    TResult Function(DelBookmarksEvent value)? del,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -559,6 +571,7 @@ class _$AddBookmarksEvent implements AddBookmarksEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(Recipe recipe) add,
+    required TResult Function(String id) del,
   }) {
     return add(recipe);
   }
@@ -568,6 +581,7 @@ class _$AddBookmarksEvent implements AddBookmarksEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(Recipe recipe)? add,
+    TResult? Function(String id)? del,
   }) {
     return add?.call(recipe);
   }
@@ -577,6 +591,7 @@ class _$AddBookmarksEvent implements AddBookmarksEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(Recipe recipe)? add,
+    TResult Function(String id)? del,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -590,6 +605,7 @@ class _$AddBookmarksEvent implements AddBookmarksEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadBookmarksEvent value) load,
     required TResult Function(AddBookmarksEvent value) add,
+    required TResult Function(DelBookmarksEvent value) del,
   }) {
     return add(this);
   }
@@ -599,6 +615,7 @@ class _$AddBookmarksEvent implements AddBookmarksEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadBookmarksEvent value)? load,
     TResult? Function(AddBookmarksEvent value)? add,
+    TResult? Function(DelBookmarksEvent value)? del,
   }) {
     return add?.call(this);
   }
@@ -608,6 +625,7 @@ class _$AddBookmarksEvent implements AddBookmarksEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadBookmarksEvent value)? load,
     TResult Function(AddBookmarksEvent value)? add,
+    TResult Function(DelBookmarksEvent value)? del,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -624,5 +642,145 @@ abstract class AddBookmarksEvent implements BookmarksEvent {
   Recipe get recipe;
   @JsonKey(ignore: true)
   _$$AddBookmarksEventCopyWith<_$AddBookmarksEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DelBookmarksEventCopyWith<$Res> {
+  factory _$$DelBookmarksEventCopyWith(
+          _$DelBookmarksEvent value, $Res Function(_$DelBookmarksEvent) then) =
+      __$$DelBookmarksEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$DelBookmarksEventCopyWithImpl<$Res>
+    extends _$BookmarksEventCopyWithImpl<$Res, _$DelBookmarksEvent>
+    implements _$$DelBookmarksEventCopyWith<$Res> {
+  __$$DelBookmarksEventCopyWithImpl(
+      _$DelBookmarksEvent _value, $Res Function(_$DelBookmarksEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$DelBookmarksEvent(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DelBookmarksEvent implements DelBookmarksEvent {
+  const _$DelBookmarksEvent({required this.id});
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'BookmarksEvent.del(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DelBookmarksEvent &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DelBookmarksEventCopyWith<_$DelBookmarksEvent> get copyWith =>
+      __$$DelBookmarksEventCopyWithImpl<_$DelBookmarksEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(Recipe recipe) add,
+    required TResult Function(String id) del,
+  }) {
+    return del(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(Recipe recipe)? add,
+    TResult? Function(String id)? del,
+  }) {
+    return del?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(Recipe recipe)? add,
+    TResult Function(String id)? del,
+    required TResult orElse(),
+  }) {
+    if (del != null) {
+      return del(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadBookmarksEvent value) load,
+    required TResult Function(AddBookmarksEvent value) add,
+    required TResult Function(DelBookmarksEvent value) del,
+  }) {
+    return del(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadBookmarksEvent value)? load,
+    TResult? Function(AddBookmarksEvent value)? add,
+    TResult? Function(DelBookmarksEvent value)? del,
+  }) {
+    return del?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadBookmarksEvent value)? load,
+    TResult Function(AddBookmarksEvent value)? add,
+    TResult Function(DelBookmarksEvent value)? del,
+    required TResult orElse(),
+  }) {
+    if (del != null) {
+      return del(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DelBookmarksEvent implements BookmarksEvent {
+  const factory DelBookmarksEvent({required final String id}) =
+      _$DelBookmarksEvent;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$DelBookmarksEventCopyWith<_$DelBookmarksEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }

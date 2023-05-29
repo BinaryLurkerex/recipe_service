@@ -22,6 +22,9 @@ abstract class BookmarksEvent with _$BookmarksEvent {
   const factory BookmarksEvent.add({
     required Recipe recipe,
   }) = AddBookmarksEvent;
+  const factory BookmarksEvent.del({
+    required String id,
+  }) = DelBookmarksEvent;
 }
 
 @singleton
@@ -29,6 +32,7 @@ class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
   BookmarksBloc() : super(const BookmarksState.loading()) {
     on<LoadBookmarksEvent>(_onLoadEvent);
     on<AddBookmarksEvent>(_onAddEvent);
+    on<DelBookmarksEvent>(_onDelEvent);
   }
 
   //! DEPRECATED
@@ -57,7 +61,6 @@ class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
           //   );
           // }
         } else {
-          //TODO: ADD STREAM LOADING FROM SERVER
           emit(state.copyWith(
             recipes: state.recipes, // + [nextRecipes],
           ));
@@ -66,8 +69,40 @@ class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
     );
   }
 
-  FutureOr<void> _onAddEvent(event, Emitter<BookmarksState> emit) {
+  FutureOr<void> _onAddEvent(AddBookmarksEvent event, Emitter<BookmarksState> emit) {
+    emit(
+      const LoadingBookmarksState(),
+    );
+
     //TODO: IMPL SERVER METHOD
+    if (_favRecipes.map((e) => e.id).toList().contains(event.recipe.id)) {
+      return null;
+    }
+
     _favRecipes.add(event.recipe);
+
+    emit(
+      DataBookmarksState(
+        recipes: _favRecipes,
+        isLastLoaded: true,
+      ),
+    );
+  }
+
+  FutureOr<void> _onDelEvent(DelBookmarksEvent event, Emitter<BookmarksState> emit) {
+    emit(
+      const LoadingBookmarksState(),
+    );
+
+    _favRecipes.removeWhere(
+      (element) => element.id == event.id,
+    );
+
+    emit(
+      DataBookmarksState(
+        recipes: _favRecipes,
+        isLastLoaded: true,
+      ),
+    );
   }
 }
