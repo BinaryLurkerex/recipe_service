@@ -1,11 +1,11 @@
 {
-    "name": "recipe",
-    "short_name": "recipe",
+    "name": "Recipe - Service",
+    "short_name": "Recipe",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Store your recipes and see what others are up to on our application",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
