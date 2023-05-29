@@ -29,6 +29,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.3.4
   injectable_generator: ^2.1.5
+  lorem_ipsum: ^0.0.3
   objectbox_generator: ^2.0.0
 
 flutter:

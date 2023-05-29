@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:7534387712299653753",
-      "lastPropertyId": "2:2779407367017585064",
+      "lastPropertyId": "4:9020311608899897377",
       "name": "UserModel",
       "flags": 2,
       "properties": [
@@ -19,14 +19,68 @@
           "id": "2:2779407367017585064",
           "name": "name",
           "type": 9
+        },
+        {
+          "id": "3:541839377861496423",
+          "name": "email",
+          "type": 9
+        },
+        {
+          "id": "4:9020311608899897377",
+          "name": "password",
+          "type": 9
         }
       ],
       "relations": []
+    },
+    {
+      "id": "2:7176259311812261820",
+      "lastPropertyId": "5:1269506162515179846",
+      "name": "RecipeModel",
+      "flags": 2,
+      "properties": [
+        {
+          "id": "1:7195376055698047205",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:859095480889184475",
+          "name": "ownerId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:5765635249936506988",
+          "relationTarget": "UserModel"
+        },
+        {
+          "id": "3:8704337338940089872",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:5374830939479975735",
+          "name": "image",
+          "type": 9
+        },
+        {
+          "id": "5:1269506162515179846",
+          "name": "desc",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:8896569351882551780",
+          "name": "bookmarks",
+          "targetId": "1:7534387712299653753"
+        }
+      ]
     }
   ],
-  "lastEntityId": "1:7534387712299653753",
-  "lastIndexId": "0:0",
-  "lastRelationId": "0:0",
+  "lastEntityId": "2:7176259311812261820",
+  "lastIndexId": "1:5765635249936506988",
+  "lastRelationId": "1:8896569351882551780",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
