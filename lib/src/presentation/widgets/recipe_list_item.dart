@@ -71,14 +71,20 @@ class RecipeListItem extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Text(
-                            recipe.name,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            style: const TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
+                          const SizedBox(
+                            width: 16.0,
+                          ),
+                          Expanded(
+                            child: Text(
+                              recipe.name,
+                              textAlign: TextAlign.right,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: const TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87,
+                              ),
                             ),
                           ),
                         ],
