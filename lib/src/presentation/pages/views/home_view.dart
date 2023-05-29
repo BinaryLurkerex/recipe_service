@@ -28,7 +28,11 @@ class HomeView extends StatelessWidget {
             loading: (state) => null,
             data: (state) {
               if (controller.hasClients) {
-                controller.jumpToPage(state.currentRecipe);
+                controller.animateToPage(
+                  state.currentRecipe,
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.bounceInOut,
+                );
               }
             },
           );
@@ -94,7 +98,6 @@ class _HomePageScroll extends StatelessWidget {
           },
           child: RecipeCard(
             isActive: active,
-            index: index,
             recipe: state.recipes[index],
           ),
         );

@@ -54,6 +54,18 @@ class _ProfilePageData extends StatelessWidget {
           indent: 64.0,
           endIndent: 64.0,
         ),
+        const Expanded(
+          child: Center(
+            child: Text(
+              'There`s no actions for Ghost user',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: Colors.black54,
+              ),
+            ),
+          ),
+        ),
         // Container(
         //   alignment: Alignment.centerLeft,
         //   padding: const EdgeInsets.only(

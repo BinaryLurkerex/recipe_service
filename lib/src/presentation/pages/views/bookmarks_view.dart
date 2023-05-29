@@ -87,30 +87,28 @@ class _BookmarksPageData extends StatelessWidget {
 
     return ListView.builder(
       controller: scrollController,
-      itemCount: state.recipes.length + 1,
+      itemCount: state.recipes.length, // + 1,
       itemBuilder: (context, index) {
-        if (index == state.recipes.length) {
-          return Container(
-            height: 92.0,
-            alignment: Alignment.center,
-            child: const CircularProgressIndicator(
-              strokeWidth: 1.0,
-            ),
-          );
-        }
+        //! UNNECESSARY W/O SERVER
+        // if (index == state.recipes.length) {
+        //   return Container(
+        //     height: 92.0,
+        //     alignment: Alignment.center,
+        //     child: const CircularProgressIndicator(
+        //       strokeWidth: 1.0,
+        //     ),
+        //   );
+        // }
 
-        return Dismissible(
-          key: Key(index.toString()),
-          onDismissed: (direction) {},
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 32.0,
-              right: 32.0,
-              bottom: 16.0,
-            ),
-            child: RecipeListItem(
-              recipe: state.recipes.elementAt(index),
-            ),
+        //TODO: implemnt dismissable logic
+        return Padding(
+          padding: const EdgeInsets.only(
+            left: 32.0,
+            right: 32.0,
+            bottom: 16.0,
+          ),
+          child: RecipeListItem(
+            recipe: state.recipes.elementAt(index),
           ),
         );
       },

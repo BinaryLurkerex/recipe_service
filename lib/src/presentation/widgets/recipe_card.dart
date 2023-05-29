@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:recipe/core/injector/injector.dart';
 import 'package:recipe/src/domain/entities/recipe.dart';
+import 'package:recipe/src/presentation/bloc/bookmarks_bloc.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeCard extends StatelessWidget {
-  final int index;
   final bool isActive;
   final Recipe recipe;
 
   const RecipeCard({
     Key? key,
-    required this.index,
     required this.isActive,
     required this.recipe,
   }) : super(key: key);
@@ -19,28 +19,27 @@ class RecipeCard extends StatelessWidget {
     final double blur = isActive ? 16.0 : 0.0;
     final double offset = isActive ? 4.0 : 0.0;
     final double top = isActive ? 0.0 : 42.0;
-    final double left = isActive ? 32.0 : 0.0;
 
-    return Opacity(
-      opacity: isActive ? 1.0 : 0.5,
-      child: AnimatedContainer(
-        duration: const Duration(seconds: 1),
-        curve: Curves.easeOutQuint,
-        margin: EdgeInsets.only(
-          top: top,
-          left: left,
-          right: 16.0,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(32.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black87.withOpacity(0.1),
-              blurRadius: blur,
-              offset: Offset(0.0, offset),
-            )
-          ],
-        ),
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.easeOutQuint,
+      margin: EdgeInsets.only(
+        top: top,
+        left: 16.0,
+        right: 16.0,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(32.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black87.withOpacity(0.1),
+            offset: Offset(0.0, offset),
+            blurRadius: blur,
+          )
+        ],
+      ),
+      child: Opacity(
+        opacity: isActive ? 1.0 : 0.75,
         child: Stack(
           children: [
             Image.network(
@@ -83,41 +82,37 @@ class RecipeCard extends StatelessWidget {
             ),
             Positioned(
               bottom: 82.0,
-              child: Padding(
+              left: 32.0,
+              child: Container(
+                alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16.0,
                 ),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                    vertical: 4.0,
-                  ),
-                  height: 24.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.white,
-                  ),
-                  child: Text(
-                    'Recipe',
-                    style: TextStyle(
-                      fontSize: 12.0,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
+                height: 32.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.0),
+                  color: Colors.white,
+                ),
+                child: Text(
+                  'Recipe by ${recipe.owner}',
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               bottom: 82.0,
-              right: 0.0,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                ),
-                child: Icon(
+              right: 32.0,
+              child: IconButton(
+                icon: const Icon(
                   Icons.bookmark_outline_rounded,
                   color: Colors.white,
                 ),
+                onPressed: () {
+                  services<BookmarksBloc>().add(AddBookmarksEvent(recipe: recipe));
+                },
               ),
             ),
           ],
