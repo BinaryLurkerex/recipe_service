@@ -41,3 +41,12 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Objectbox related
+/lib/objectbox.g.dart
+/lib/objectbox-model.json
+
+# Build runner related
+*.g.dart
+*.gr.dart
+*.freezed.dart
