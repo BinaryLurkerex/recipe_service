@@ -7,6 +7,10 @@ abstract class ValueObject<T> {
   const ValueObject();
   Either<ValueFailure<T>, T> get value;
 
+  bool isValid() {
+    return value.isRight();
+  }
+
   @override
   String toString() => 'ValueObject($value)';
 
