@@ -3,8 +3,9 @@ import 'package:injectable/injectable.dart';
 import 'package:recipe/app_router.dart';
 import 'package:recipe/infrastucture/core/injector.dart';
 
-void main() {
-  configureDependencies(Environment.prod);
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies(Environment.prod);
   runApp(const RecipeApp());
 }
 

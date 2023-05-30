@@ -6,7 +6,11 @@ import 'package:recipe/domain/core/value_object.dart';
 
 @lazySingleton
 class FirebaseUserMapper {
-  User toDomain(_google.User _) {
+  User? toDomain(_google.User? _) {
+    if (_ == null) {
+      return null;
+    }
+
     return User(
       id: UniqueId.fromUniqueString(_.uid),
       name: _.displayName ?? _.email?.split('@').first ?? '',

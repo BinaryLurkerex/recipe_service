@@ -1,17 +1,22 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:recipe/application/auth/auth_bloc.dart';
 import 'package:recipe/domain/auth/auth_facade.dart';
 import 'package:recipe/domain/auth/auth_failure.dart';
 import 'package:recipe/domain/auth/value_objects.dart';
+import 'package:recipe/infrastucture/core/injector.dart';
 
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';
 
 part 'sign_in_bloc.freezed.dart';
 
+@injectable
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final AuthFacade _authFacade;
 
@@ -37,20 +42,26 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     ));
   }
 
-  FutureOr<void> _onSingUpWithEmailAndPasswordEnent(SingUpWithEmailAndPasswordEnent event, Emitter<SignInState> emit) {
-    _performActionOnAuthFacadeWithEmailAndPassword(
-      _authFacade.registerWithEmailAndPassword,
-    ).listen((event) {
-      emit(event);
-    });
+  FutureOr<void> _onSingUpWithEmailAndPasswordEnent(SingUpWithEmailAndPasswordEnent event, Emitter<SignInState> emit) async {
+    await _performActionOnAuthFacadeWithEmailAndPassword(
+      _authFacade.signInWithEmailAndPassword,
+    );
+
+    if (kDebugMode) {
+      final AuthBloc authBloc = getIt<AuthBloc>();
+      authBloc.add(const AuthEvent.authCheck());
+    }
   }
 
-  FutureOr<void> _onSignInWithEmailAndPasswordEvent(SignInWithEmailAndPasswordEvent event, Emitter<SignInState> emit) {
-    _performActionOnAuthFacadeWithEmailAndPassword(
-      _authFacade.registerWithEmailAndPassword,
-    ).listen((event) {
-      emit(event);
-    });
+  FutureOr<void> _onSignInWithEmailAndPasswordEvent(SignInWithEmailAndPasswordEvent event, Emitter<SignInState> emit) async {
+    await _performActionOnAuthFacadeWithEmailAndPassword(
+      _authFacade.signInWithEmailAndPassword,
+    );
+
+    if (kDebugMode) {
+      final AuthBloc authBloc = getIt<AuthBloc>();
+      authBloc.add(const AuthEvent.authCheck());
+    }
   }
 
   FutureOr<void> _onSignInWithGoogleEvent(SignInWithGoogleEvent event, Emitter<SignInState> emit) async {
@@ -66,22 +77,22 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     ));
   }
 
-  Stream<SignInState> _performActionOnAuthFacadeWithEmailAndPassword(
+  Future<void> _performActionOnAuthFacadeWithEmailAndPassword(
     Future<Either<AuthFailure, Unit>> Function({
       required EmailAddress emailAddress,
       required Password password,
     }) call,
-  ) async* {
+  ) async {
     Either<AuthFailure, Unit> failureOrSuccess;
 
     final isEmailValid = state.emailAddress.isValid();
     final isPasswordValid = state.password.isValid();
 
     if (isEmailValid && isPasswordValid) {
-      yield state.copyWith(
+      emit(state.copyWith(
         isSubmitting: true,
         authFailureOrSuccessOption: none(),
-      );
+      ));
 
       failureOrSuccess = await call(
         emailAddress: state.emailAddress,
@@ -93,10 +104,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       );
     }
 
-    yield state.copyWith(
+    emit(state.copyWith(
       isSubmitting: false,
       showErrorMessages: true,
       authFailureOrSuccessOption: optionOf(failureOrSuccess),
-    );
+    ));
   }
 }

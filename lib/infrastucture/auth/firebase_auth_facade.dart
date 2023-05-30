@@ -23,13 +23,9 @@ class FirebaseAuthFacade implements AuthFacade {
   );
 
   @override
-  Future<Option<User>> getSignedInUser() async {
+  Future<Option<User?>> getSignedInUser() async {
     final _google.User? firebaseUser = _firebaseAuth.currentUser;
-    if (firebaseUser == null) {
-      throw const AuthFailure.serverError();
-    }
-
-    final User user = _firebaseUserMapper.toDomain(firebaseUser);
+    final User? user = _firebaseUserMapper.toDomain(firebaseUser);
     return optionOf(user);
   }
 
@@ -48,6 +44,12 @@ class FirebaseAuthFacade implements AuthFacade {
             password: passwordStr,
           )
           .then((_) => right(unit));
+    } on _google.FirebaseAuthException catch (e) {
+      if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+        return left(const AuthFailure.emailAlreadyInUse());
+      }
+
+      return left(const AuthFailure.serverError());
     } on PlatformException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         return left(const AuthFailure.emailAlreadyInUse());
@@ -72,11 +74,13 @@ class FirebaseAuthFacade implements AuthFacade {
             password: passwordStr,
           )
           .then((_) => right(unit));
-    } on PlatformException catch (e) {
+    } on _google.FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_WRONG_PASSWORD' || e.code == 'ERROR_USER_NOT_FOUND') {
         return left(const AuthFailure.invalidEmailOrPassword());
       }
 
+      return left(const AuthFailure.serverError());
+    } on PlatformException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }

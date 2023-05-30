@@ -14,10 +14,12 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i8;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:recipe/app_router.dart' as _i3;
+import 'package:recipe/application/auth/auth_bloc.dart' as _i15;
+import 'package:recipe/application/auth/sign_in/sign_in_bloc.dart' as _i14;
 import 'package:recipe/domain/auth/auth_facade.dart' as _i12;
 import 'package:recipe/infrastucture/auth/firebase_auth_facade.dart' as _i13;
 import 'package:recipe/infrastucture/auth/firebase_user_mapper.dart' as _i7;
-import 'package:recipe/infrastucture/core/firebase_inject.dart' as _i14;
+import 'package:recipe/infrastucture/core/firebase_inject.dart' as _i16;
 import 'package:recipe/presentation/bloc/auth_bloc.dart' as _i4;
 import 'package:recipe/presentation/bloc/bookmarks_bloc.dart' as _i5;
 import 'package:recipe/presentation/bloc/home_bloc.dart' as _i9;
@@ -55,8 +57,10 @@ extension GetItInjectableX on _i1.GetIt {
       ),
       registerFor: {_prod},
     );
+    gh.factory<_i14.SignInBloc>(() => _i14.SignInBloc(gh<_i12.AuthFacade>()));
+    gh.factory<_i15.AuthBloc>(() => _i15.AuthBloc(gh<_i12.AuthFacade>()));
     return this;
   }
 }
 
-class _$FirebaseInject extends _i14.FirebaseInject {}
+class _$FirebaseInject extends _i16.FirebaseInject {}
