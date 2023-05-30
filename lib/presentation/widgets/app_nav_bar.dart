@@ -11,50 +11,6 @@ class AppNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 92.0,
-      alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 32.0,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(
-            icon: const Icon(
-              Icons.home_filled,
-            ),
-            color: Colors.black87,
-            onPressed: () {
-              pageBloc.add(const PageEvent.open(
-                value: 0,
-              ));
-            },
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.bookmark_rounded,
-            ),
-            color: Colors.black87,
-            onPressed: () {
-              pageBloc.add(const PageEvent.open(
-                value: 1,
-              ));
-            },
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.person_rounded,
-            ),
-            color: Colors.black87,
-            onPressed: () {
-              pageBloc.add(const PageEvent.open(
-                value: 2,
-              ));
-            },
-          ),
-        ],
-      ),
-    );
+    return Placeholder();
   }
 }

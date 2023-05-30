@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/infrastucture/core/injector.dart';
 import 'package:recipe/presentation/bloc/profile_bloc.dart';
-import 'package:recipe/presentation/widgets/app_header_bar.dart';
 import 'package:recipe/presentation/widgets/profile_header.dart';
 
 class ProfileView extends StatelessWidget {
@@ -16,9 +15,6 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppHeaderBar(
-        title: 'Profile',
-      ),
       body: BlocBuilder<ProfileBloc, ProfileState>(
         bloc: profileBloc,
         builder: (context, state) {

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/infrastucture/core/injector.dart';
 import 'package:recipe/presentation/bloc/bookmarks_bloc.dart';
-import 'package:recipe/presentation/widgets/app_header_bar.dart';
 import 'package:recipe/presentation/widgets/recipe_list_item.dart';
 
 class BookmarksView extends StatelessWidget {
@@ -16,9 +15,6 @@ class BookmarksView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppHeaderBar(
-        title: 'Bookmarks',
-      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 16.0),
         child: BlocBuilder<BookmarksBloc, BookmarksState>(

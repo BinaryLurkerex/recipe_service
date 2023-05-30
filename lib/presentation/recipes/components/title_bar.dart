@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:recipe/presentation/core/style/app_text_style.dart';
 
-class AppHeaderBar extends PreferredSize {
+class TitleBar extends PreferredSize {
   final String title;
   final List<Widget> actions;
 
-  AppHeaderBar({
+  TitleBar({
     super.key,
     required this.title,
     this.actions = const [],
   }) : super(
-          preferredSize: const Size.fromHeight(92.0),
+          preferredSize: const Size.fromHeight(64.0),
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 32.0,
@@ -21,11 +22,7 @@ class AppHeaderBar extends PreferredSize {
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     title,
-                    style: const TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black87,
-                    ),
+                    style: AppTextStyle.dark().display,
                   ),
                 ),
                 if (actions.isNotEmpty)

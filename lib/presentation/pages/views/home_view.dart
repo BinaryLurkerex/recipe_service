@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/infrastucture/core/injector.dart';
 import 'package:recipe/presentation/bloc/home_bloc.dart';
-import 'package:recipe/presentation/widgets/app_header_bar.dart';
 import 'package:recipe/presentation/widgets/recipe_card.dart';
 
 class HomeView extends StatelessWidget {
@@ -18,9 +17,6 @@ class HomeView extends StatelessWidget {
     final PageController controller = PageController(viewportFraction: 0.75);
 
     return Scaffold(
-      appBar: AppHeaderBar(
-        title: 'Recipes',
-      ),
       body: BlocConsumer<HomeBloc, HomeState>(
         bloc: homeBloc,
         listener: (context, state) {
