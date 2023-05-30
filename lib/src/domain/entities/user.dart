@@ -5,9 +5,6 @@ class User extends Equatable {
   final String name;
   final String email;
 
-  //! How to display this?
-  // final int following;
-
   const User({
     required this.id,
     required this.name,

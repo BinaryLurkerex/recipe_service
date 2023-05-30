@@ -46,7 +46,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           name: loremIpsum(words: 4),
           image: 'fake-image',
           desc: loremIpsum(paragraphs: 2, words: 60),
-          favsCount: 6,
+          bookmarks: const [],
         ),
       ),
       isLastLoaded: false,

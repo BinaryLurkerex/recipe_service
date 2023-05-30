@@ -3,10 +3,12 @@ import 'package:equatable/equatable.dart';
 class Recipe extends Equatable {
   final String id;
   final String owner;
+
   final String name;
   final String image;
   final String desc;
-  final int favsCount;
+
+  final List<String> bookmarks;
 
   const Recipe({
     required this.id,
@@ -14,9 +16,9 @@ class Recipe extends Equatable {
     required this.name,
     required this.image,
     required this.desc,
-    required this.favsCount,
+    required this.bookmarks,
   });
 
   @override
-  List<Object?> get props => [name];
+  List<Object?> get props => [id, owner];
 }

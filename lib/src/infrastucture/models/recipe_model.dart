@@ -1,19 +1,14 @@
-import 'package:objectbox/objectbox.dart';
 import 'package:recipe/src/domain/entities/recipe.dart';
-import 'package:recipe/src/infra/models/user_model.dart';
 
-@Entity()
-@Sync()
 class RecipeModel {
-  @Id()
-  int id;
-  ToOne<UserModel> owner = ToOne<UserModel>();
+  String id;
+  String owner;
 
   String name;
   String image;
   String desc;
 
-  ToMany<UserModel> bookmarks = ToMany<UserModel>();
+  List<String> bookmarks;
 
   RecipeModel({
     required this.id,
@@ -26,12 +21,12 @@ class RecipeModel {
 
   Recipe getRecipe() {
     return Recipe(
-      id: id.toRadixString(16),
-      owner: id.toRadixString(16),
+      id: id,
+      owner: owner,
       name: name,
       image: image,
       desc: desc,
-      favsCount: bookmarks.length,
+      bookmarks: bookmarks,
     );
   }
 }
