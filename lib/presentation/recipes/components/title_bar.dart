@@ -23,6 +23,8 @@ class TitleBar extends PreferredSize {
                   child: Text(
                     title,
                     style: AppTextStyle.dark().display,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 if (actions.isNotEmpty)
