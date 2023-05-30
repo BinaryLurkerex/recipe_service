@@ -24,25 +24,31 @@ class AppTextStyle {
 
   TextStyle get display => TextStyle(
         fontSize: 24,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w900,
+        fontFamily: 'SF-Pro',
         color: _currentPrimaryColor,
+        letterSpacing: .5,
       );
 
   TextStyle get body => TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'SF-Pro',
         color: _currentPrimaryColor,
+        letterSpacing: .5,
       );
 
   TextStyle get headline => TextStyle(
         fontSize: 16,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w500,
+        fontFamily: 'SF-Pro',
         color: _currentSecondaryColor,
       );
 
   TextStyle get label => TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w400,
+        fontFamily: 'SF-Pro',
         color: _currentSecondaryColor,
       );
 }

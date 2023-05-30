@@ -8,6 +8,8 @@ environment:
 
 dependencies:
   auto_route: ^7.3.1
+  awesome_bottom_bar: ^1.2.2
+  cupertino_icons: ^1.0.5
   dartz: ^0.10.1
   equatable: ^2.0.5
   firebase_auth: ^4.6.1
@@ -41,11 +43,6 @@ flutter:
     - assets/images/
     - assets/svg/
   fonts:
-    - family: SFProText
+    - family: SF-Pro
       fonts:
-        - asset: assets/fonts/SFProText-Regular.otf
-          weight: 400
-        - asset: assets/fonts/SFProText-Medium.otf
-          weight: 500
-        - asset: assets/fonts/SFProText-Semibold.otf
-          weight: 600
+        - asset: assets/fonts/SF-Pro.ttf
