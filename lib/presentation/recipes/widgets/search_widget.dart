@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/presentation/core/style/app_text_style.dart';
+import 'package:recipe/presentation/core/app_text_style.dart';
 import 'package:recipe/presentation/recipes/components/title_bar.dart';
 
 class SearchWidget extends StatelessWidget {
