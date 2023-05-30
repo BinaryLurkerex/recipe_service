@@ -1,0 +1,8 @@
+# Build related
+/node_modules
+/build
+.firebase
+package-lock.json
+
+# Security related
+.env

@@ -3,12 +3,17 @@
     "short_name": "Recipe",
     "start_url": "/Recipe-Service/",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
+    "background_color": "#FFFFFF",
+    "theme_color": "#F6925C",
     "description": "Store your recipes and see what others are up to on our application",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
+        {
+            "src": "icons/favicon.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
         {
             "src": "icons/Icon-192.png",
             "sizes": "192x192",
