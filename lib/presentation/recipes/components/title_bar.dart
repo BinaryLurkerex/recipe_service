@@ -17,24 +17,25 @@ class TitleBar extends PreferredSize {
               vertical: 8.0,
             ),
             child: Stack(
-              children: <Widget>[
+              children: [
                 Align(
                   alignment: Alignment.bottomLeft,
-                  child: Text(
-                    title,
-                    style: AppTextStyle.dark().display,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          title,
+                          style: AppTextStyle.dark().display,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      ...actions
+                    ],
                   ),
                 ),
-                if (actions.isNotEmpty)
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: actions,
-                    ),
-                  ),
               ],
             ),
           ),

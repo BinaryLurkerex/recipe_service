@@ -8,14 +8,16 @@ class ProfileBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
         Expanded(
           child: FittedBox(
-            child: CircleAvatar(),
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+            ),
           ),
         ),
-        Expanded(
+        const Expanded(
           flex: 3,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
