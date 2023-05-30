@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:recipe/app_router.dart';
 import 'package:recipe/infrastucture/core/injector.dart';
 
 void main() {
-  configureDependencies();
+  configureDependencies(Environment.prod);
   runApp(const RecipeApp());
 }
 
