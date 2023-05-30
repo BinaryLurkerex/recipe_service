@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-class User extends Equatable {
+class UserDEPRECATED extends Equatable {
   final String id;
   final String name;
   final String email;
 
-  const User({
+  const UserDEPRECATED({
     required this.id,
     required this.name,
     required this.email,

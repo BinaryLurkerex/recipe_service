@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Recipe extends Equatable {
+class RecipeDEPRECATED extends Equatable {
   final String id;
   final String owner;
 
@@ -10,7 +10,7 @@ class Recipe extends Equatable {
 
   final List<String> bookmarks;
 
-  const Recipe({
+  const RecipeDEPRECATED({
     required this.id,
     required this.owner,
     required this.name,

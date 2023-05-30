@@ -19,8 +19,8 @@ class RecipeModel {
     required this.bookmarks,
   });
 
-  Recipe getRecipe() {
-    return Recipe(
+  RecipeDEPRECATED getRecipe() {
+    return RecipeDEPRECATED(
       id: id,
       owner: owner,
       name: name,

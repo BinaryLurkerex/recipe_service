@@ -16,8 +16,8 @@ class UserModel {
     required this.password,
   });
 
-  User getUser() {
-    return User(
+  UserDEPRECATED getUser() {
+    return UserDEPRECATED(
       id: id,
       name: name,
       email: email,

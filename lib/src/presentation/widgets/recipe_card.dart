@@ -6,7 +6,7 @@ import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeCard extends StatelessWidget {
   final bool isActive;
-  final Recipe recipe;
+  final RecipeDEPRECATED recipe;
 
   const RecipeCard({
     Key? key,

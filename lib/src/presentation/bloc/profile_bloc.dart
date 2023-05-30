@@ -13,7 +13,7 @@ part 'profile_bloc.freezed.dart';
 abstract class ProfileState with _$ProfileState {
   const factory ProfileState.loading() = LoadingProfileState;
   const factory ProfileState.user({
-    required User user,
+    required UserDEPRECATED user,
   }) = UserProfileState;
 }
 
@@ -33,7 +33,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     await Future.delayed(const Duration(seconds: 1));
     emit(const ProfileState.user(
-      user: User(
+      user: UserDEPRECATED(
         id: 'ghost-id',
         name: 'Ghost',
         email: 'ghost@example.com',

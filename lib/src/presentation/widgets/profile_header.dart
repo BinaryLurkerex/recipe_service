@@ -3,7 +3,7 @@ import 'package:recipe/src/domain/entities/user.dart';
 import 'package:recipe/src/presentation/widgets/profile_dot.dart';
 
 class ProfileHeader extends StatelessWidget {
-  final User user;
+  final UserDEPRECATED user;
 
   const ProfileHeader({
     super.key,

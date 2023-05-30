@@ -3,7 +3,7 @@ import 'package:recipe/src/domain/entities/recipe.dart';
 import 'package:recipe/src/presentation/styles/app_colors.dart';
 
 class RecipeListItem extends StatelessWidget {
-  final Recipe recipe;
+  final RecipeDEPRECATED recipe;
   final IconData icon;
   final Function()? onIconPressed;
 
