@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe/application/auth/sign_in/sign_in_bloc.dart';
-import 'package:recipe/presentation/core/style/app_text_style.dart';
+import 'package:recipe/presentation/core/app_text_style.dart';
+import 'package:recipe/presentation/core/default_gradient.dart';
 import 'package:recipe/presentation/sign_in/components/gradient_button.dart';
-import 'package:recipe/presentation/styles/gradient_style.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({super.key});
@@ -80,7 +80,7 @@ class _Buttons extends StatelessWidget {
                 _SignUpForm(bloc),
               );
             },
-            gradient: defaultGradient(context),
+            gradient: DefaultGradient(context),
             child: SizedBox(
               width: double.infinity,
               child: Text(
@@ -205,7 +205,7 @@ class _LoginForm extends StatelessWidget {
                           const SignInEvent.signInWithEmailAndPassword(),
                         );
                       },
-                      gradient: defaultGradient(context),
+                      gradient: DefaultGradient(context),
                       child: Text(
                         'Log In',
                         textAlign: TextAlign.center,
@@ -318,7 +318,7 @@ class _SignUpForm extends StatelessWidget {
                           const SignInEvent.singUpWithEmailAndPassword(),
                         );
                       },
-                      gradient: defaultGradient(context),
+                      gradient: DefaultGradient(context),
                       child: Text(
                         'Sign up',
                         textAlign: TextAlign.center,

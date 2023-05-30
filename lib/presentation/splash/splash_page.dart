@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/app_router.gr.dart';
 import 'package:recipe/application/auth/auth_bloc.dart';
-import 'package:recipe/presentation/styles/gradient_style.dart';
+import 'package:recipe/presentation/core/default_gradient.dart';
 
 @RoutePage()
 class SplashPage extends StatelessWidget {
@@ -36,7 +36,7 @@ class _Loading extends StatelessWidget {
     return Scaffold(
       body: DecoratedBox(
         decoration: BoxDecoration(
-          gradient: defaultGradient(context),
+          gradient: DefaultGradient(context),
         ),
         child: const Center(
           child: CircularProgressIndicator(
