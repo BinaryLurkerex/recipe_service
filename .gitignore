@@ -50,3 +50,6 @@ app.*.map.json
 *.g.dart
 *.gr.dart
 *.freezed.dart
+
+# Privacy related
+*.keystore
