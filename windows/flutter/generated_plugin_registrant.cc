@@ -6,9 +6,9 @@
 
 #include "generated_plugin_registrant.h"
 
-#include <objectbox_sync_flutter_libs/objectbox_sync_flutter_libs_plugin.h>
+#include <firebase_core/firebase_core_plugin_c_api.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
-  ObjectboxSyncFlutterLibsPluginRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("ObjectboxSyncFlutterLibsPlugin"));
+  FirebaseCorePluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("FirebaseCorePluginCApi"));
 }

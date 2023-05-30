@@ -10,5 +10,5 @@ abstract class UserInterfaceFailure with _$UserInterfaceFailure {
 }
 
 abstract class UserInterface {
-  Future<Either<UserInterfaceFailure, User>> getById();
+  Future<Either<UserInterfaceFailure, UserDEPRECATED>> getById();
 }

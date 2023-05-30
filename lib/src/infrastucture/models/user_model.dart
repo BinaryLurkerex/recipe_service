@@ -1,15 +1,12 @@
-import 'package:objectbox/objectbox.dart';
 import 'package:recipe/src/domain/entities/user.dart';
 
-@Entity()
-@Sync()
 class UserModel {
-  @Id()
-  int id;
+  String id;
+
   String name;
   String email;
 
-  //! Hashed password
+  //! Hashed
   String password;
 
   UserModel({
@@ -19,9 +16,9 @@ class UserModel {
     required this.password,
   });
 
-  User getUser() {
-    return User(
-      id: id.toRadixString(16),
+  UserDEPRECATED getUser() {
+    return UserDEPRECATED(
+      id: id,
       name: name,
       email: email,
     );

@@ -15,7 +15,7 @@ abstract class HomeState with _$HomeState {
   const factory HomeState.loading() = LoadingHomeState;
   const factory HomeState.data({
     required int currentRecipe,
-    required List<Recipe> recipes,
+    required List<RecipeDEPRECATED> recipes,
     required bool isLastLoaded,
   }) = DataHomeState;
 }
@@ -40,13 +40,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       currentRecipe: 0,
       recipes: List.generate(
         20,
-        (index) => Recipe(
+        (index) => RecipeDEPRECATED(
           id: 'fake-id-$index',
           owner: 'fake-owner',
           name: loremIpsum(words: 4),
           image: 'fake-image',
           desc: loremIpsum(paragraphs: 2, words: 60),
-          favsCount: 6,
+          bookmarks: const [],
         ),
       ),
       isLastLoaded: false,

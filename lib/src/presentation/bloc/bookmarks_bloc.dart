@@ -11,7 +11,7 @@ part 'bookmarks_bloc.freezed.dart';
 abstract class BookmarksState with _$BookmarksState {
   const factory BookmarksState.loading() = LoadingBookmarksState;
   const factory BookmarksState.data({
-    required List<Recipe> recipes,
+    required List<RecipeDEPRECATED> recipes,
     required bool isLastLoaded,
   }) = DataBookmarksState;
 }
@@ -20,7 +20,7 @@ abstract class BookmarksState with _$BookmarksState {
 abstract class BookmarksEvent with _$BookmarksEvent {
   const factory BookmarksEvent.load() = LoadBookmarksEvent;
   const factory BookmarksEvent.add({
-    required Recipe recipe,
+    required RecipeDEPRECATED recipe,
   }) = AddBookmarksEvent;
   const factory BookmarksEvent.del({
     required String id,
@@ -36,7 +36,7 @@ class BookmarksBloc extends Bloc<BookmarksEvent, BookmarksState> {
   }
 
   //! DEPRECATED
-  final List<Recipe> _favRecipes = [];
+  final List<RecipeDEPRECATED> _favRecipes = [];
 
   FutureOr<void> _onLoadEvent(LoadBookmarksEvent event, Emitter<BookmarksState> emit) async {
     emit(const BookmarksState.loading());
