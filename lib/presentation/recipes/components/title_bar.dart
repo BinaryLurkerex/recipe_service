@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/presentation/core/app_text_style.dart';
+import 'package:recipe_service/presentation/core/app_text_style.dart';
 
 class TitleBar extends PreferredSize {
   final String title;

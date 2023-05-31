@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:recipe/firebase_options.dart';
+import 'package:recipe_service/firebase_options.dart';
 
 // Generated injector
 import 'injector.config.dart';

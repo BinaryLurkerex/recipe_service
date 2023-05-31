@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/presentation/recipes/components/recipe_card.dart';
-import 'package:recipe/presentation/recipes/components/title_bar.dart';
+import 'package:recipe_service/presentation/recipes/components/recipe_card.dart';
+import 'package:recipe_service/presentation/recipes/components/title_bar.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});

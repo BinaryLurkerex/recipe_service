@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipe/application/auth/sign_in/sign_in_bloc.dart';
-import 'package:recipe/presentation/core/app_text_style.dart';
-import 'package:recipe/presentation/core/default_gradient.dart';
-import 'package:recipe/presentation/sign_in/components/gradient_button.dart';
+import 'package:recipe_service/application/auth/sign_in/sign_in_bloc.dart';
+import 'package:recipe_service/presentation/core/app_text_style.dart';
+import 'package:recipe_service/presentation/core/default_gradient.dart';
+import 'package:recipe_service/presentation/sign_in/components/gradient_button.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({super.key});

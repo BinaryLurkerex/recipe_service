@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
-import 'package:recipe/app_router.gr.dart';
+import 'package:recipe_service/app_router.gr.dart';
 
 @singleton
 @AutoRouterConfig()

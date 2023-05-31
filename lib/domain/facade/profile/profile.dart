@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:recipe/domain/core/entity.dart';
-import 'package:recipe/domain/core/value_object.dart';
-import 'package:recipe/domain/facade/profile/value_ojects.dart';
+import 'package:recipe_service/domain/core/entity.dart';
+import 'package:recipe_service/domain/core/value_object.dart';
+import 'package:recipe_service/domain/facade/profile/value_ojects.dart';
 
 part 'profile.freezed.dart';
 

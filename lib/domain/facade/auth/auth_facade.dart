@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:recipe/domain/facade/auth/auth_failure.dart';
-import 'package:recipe/domain/facade/auth/user.dart';
-import 'package:recipe/domain/facade/auth/value_objects.dart';
+import 'package:recipe_service/domain/facade/auth/auth_failure.dart';
+import 'package:recipe_service/domain/facade/auth/user.dart';
+import 'package:recipe_service/domain/facade/auth/value_objects.dart';
 
 abstract class AuthFacade {
   Future<Option<User?>> getSignedInUser();

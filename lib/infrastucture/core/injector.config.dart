@@ -13,16 +13,21 @@ import 'package:firebase_auth/firebase_auth.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i6;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:recipe/app_router.dart' as _i3;
-import 'package:recipe/application/auth/auth_bloc.dart' as _i13;
-import 'package:recipe/application/auth/sign_in/sign_in_bloc.dart' as _i12;
-import 'package:recipe/application/post/post_bloc.dart' as _i7;
-import 'package:recipe/domain/facade/auth/auth_facade.dart' as _i10;
-import 'package:recipe/domain/facade/profile/profile_facade.dart' as _i8;
-import 'package:recipe/infrastucture/auth/firebase_auth_facade.dart' as _i11;
-import 'package:recipe/infrastucture/auth/firebase_user_mapper.dart' as _i5;
-import 'package:recipe/infrastucture/core/firebase_injector.dart' as _i14;
-import 'package:recipe/infrastucture/profile/firebase_profile_facade.dart'
+import 'package:recipe_service/app_router.dart' as _i3;
+import 'package:recipe_service/application/auth/auth_bloc.dart' as _i13;
+import 'package:recipe_service/application/auth/sign_in/sign_in_bloc.dart'
+    as _i12;
+import 'package:recipe_service/application/post/post_bloc.dart' as _i7;
+import 'package:recipe_service/domain/facade/auth/auth_facade.dart' as _i10;
+import 'package:recipe_service/domain/facade/profile/profile_facade.dart'
+    as _i8;
+import 'package:recipe_service/infrastucture/auth/firebase_auth_facade.dart'
+    as _i11;
+import 'package:recipe_service/infrastucture/auth/firebase_user_mapper.dart'
+    as _i5;
+import 'package:recipe_service/infrastucture/core/firebase_injector.dart'
+    as _i14;
+import 'package:recipe_service/infrastucture/profile/firebase_profile_facade.dart'
     as _i9;
 
 const String _prod = 'prod';

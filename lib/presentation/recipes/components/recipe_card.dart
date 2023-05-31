@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe/presentation/core/app_text_style.dart';
-import 'package:recipe/presentation/recipes/components/popular_comment.dart';
+import 'package:recipe_service/presentation/core/app_text_style.dart';
+import 'package:recipe_service/presentation/recipes/components/popular_comment.dart';
 
 class RecipeCard extends StatelessWidget {
   const RecipeCard({super.key});

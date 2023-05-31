@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/kt.dart';
-import 'package:recipe/domain/core/value_failure.dart';
+import 'package:recipe_service/domain/core/value_failure.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   const emailRegex = r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";

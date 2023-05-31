@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe/presentation/core/app_text_style.dart';
-import 'package:recipe/presentation/recipes/components/title_bar.dart';
+import 'package:recipe_service/presentation/core/app_text_style.dart';
+import 'package:recipe_service/presentation/recipes/components/title_bar.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget({super.key});

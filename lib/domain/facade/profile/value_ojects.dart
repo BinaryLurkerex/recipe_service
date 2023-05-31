@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:recipe/domain/core/value_failure.dart';
-import 'package:recipe/domain/core/value_object.dart';
-import 'package:recipe/domain/core/value_validators.dart';
+import 'package:recipe_service/domain/core/value_failure.dart';
+import 'package:recipe_service/domain/core/value_object.dart';
+import 'package:recipe_service/domain/core/value_validators.dart';
 
 class Username extends ValueObject<String> {
   @override

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/kt.dart';
-import 'package:recipe/domain/core/value_object.dart';
-import 'package:recipe/domain/facade/profile/profile.dart';
-import 'package:recipe/domain/facade/profile/profile_failure.dart';
-import 'package:recipe/domain/facade/profile/value_ojects.dart';
+import 'package:recipe_service/domain/core/value_object.dart';
+import 'package:recipe_service/domain/facade/profile/profile.dart';
+import 'package:recipe_service/domain/facade/profile/profile_failure.dart';
+import 'package:recipe_service/domain/facade/profile/value_ojects.dart';
 
 abstract class ProfileFacade {
   // `Self-User` Events

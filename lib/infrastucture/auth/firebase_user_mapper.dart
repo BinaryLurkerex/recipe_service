@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart' as google;
 import 'package:injectable/injectable.dart';
-import 'package:recipe/domain/facade/auth/user.dart';
-import 'package:recipe/domain/facade/auth/value_objects.dart';
-import 'package:recipe/domain/core/value_object.dart';
+import 'package:recipe_service/domain/facade/auth/user.dart';
+import 'package:recipe_service/domain/facade/auth/value_objects.dart';
+import 'package:recipe_service/domain/core/value_object.dart';
 
 @lazySingleton
 class FirebaseUserMapper {

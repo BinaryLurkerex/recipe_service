@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:recipe/app_router.dart';
-import 'package:recipe/application/auth/auth_bloc.dart';
-import 'package:recipe/infrastucture/core/injector.dart';
+import 'package:recipe_service/app_router.dart';
+import 'package:recipe_service/application/auth/auth_bloc.dart';
+import 'package:recipe_service/infrastucture/core/injector.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
