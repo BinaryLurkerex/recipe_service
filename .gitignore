@@ -42,14 +42,12 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Objectbox related
-/lib/objectbox.g.dart
-/lib/objectbox-model.json
-
 # Build runner related
 *.g.dart
 *.gr.dart
 *.freezed.dart
 
 # Privacy related
+lib/firebase_options.dart
+ios/firebase_app_id_file.json
 *.keystore

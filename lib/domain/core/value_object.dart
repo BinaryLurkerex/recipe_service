@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:recipe/domain/core/value_failure.dart';
+import 'package:recipe/domain/core/value_validators.dart';
 import 'package:uuid/uuid.dart';
 
 @immutable
@@ -43,4 +45,30 @@ class UniqueId extends ValueObject<String> {
   }
 
   const UniqueId._(this.value);
+}
+
+class List3<T> extends ValueObject<KtList<T>> {
+  @override
+  final Either<ValueFailure<KtList<T>>, KtList<T>> value;
+
+  static const maxLength = 3;
+
+  factory List3(KtList<T> input) {
+    return List3._(
+      validateMaxListLength(
+        input,
+        maxLength,
+      ),
+    );
+  }
+
+  const List3._(this.value);
+
+  int get length {
+    return value.getOrElse(() => emptyList()).size;
+  }
+
+  bool get isFull {
+    return length == maxLength;
+  }
 }

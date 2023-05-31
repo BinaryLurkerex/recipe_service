@@ -1,18 +1,18 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart' as _google;
+import 'package:firebase_auth/firebase_auth.dart' as google;
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:recipe/domain/auth/auth_facade.dart';
-import 'package:recipe/domain/auth/auth_failure.dart';
-import 'package:recipe/domain/auth/user.dart';
-import 'package:recipe/domain/auth/value_objects.dart';
+import 'package:recipe/domain/facade/auth/auth_facade.dart';
+import 'package:recipe/domain/facade/auth/auth_failure.dart';
+import 'package:recipe/domain/facade/auth/user.dart';
+import 'package:recipe/domain/facade/auth/value_objects.dart';
 import 'package:recipe/infrastucture/auth/firebase_user_mapper.dart';
 
 @prod
 @LazySingleton(as: AuthFacade)
 class FirebaseAuthFacade implements AuthFacade {
-  final _google.FirebaseAuth _firebaseAuth;
+  final google.FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final FirebaseUserMapper _firebaseUserMapper;
 
@@ -24,7 +24,7 @@ class FirebaseAuthFacade implements AuthFacade {
 
   @override
   Future<Option<User?>> getSignedInUser() async {
-    final _google.User? firebaseUser = _firebaseAuth.currentUser;
+    final google.User? firebaseUser = _firebaseAuth.currentUser;
     final User? user = _firebaseUserMapper.toDomain(firebaseUser);
     return optionOf(user);
   }
@@ -44,7 +44,7 @@ class FirebaseAuthFacade implements AuthFacade {
             password: passwordStr,
           )
           .then((_) => right(unit));
-    } on _google.FirebaseAuthException catch (e) {
+    } on google.FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         return left(const AuthFailure.emailAlreadyInUse());
       }
@@ -74,7 +74,7 @@ class FirebaseAuthFacade implements AuthFacade {
             password: passwordStr,
           )
           .then((_) => right(unit));
-    } on _google.FirebaseAuthException catch (e) {
+    } on google.FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_WRONG_PASSWORD' || e.code == 'ERROR_USER_NOT_FOUND') {
         return left(const AuthFailure.invalidEmailOrPassword());
       }
@@ -95,7 +95,7 @@ class FirebaseAuthFacade implements AuthFacade {
       }
 
       final googleAuthentication = await googleUser.authentication;
-      final authCredential = _google.GoogleAuthProvider.credential(
+      final authCredential = google.GoogleAuthProvider.credential(
         accessToken: googleAuthentication.accessToken,
         idToken: googleAuthentication.idToken,
       );

@@ -1,12 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart' as _google;
+import 'package:firebase_auth/firebase_auth.dart' as google;
 import 'package:injectable/injectable.dart';
-import 'package:recipe/domain/auth/user.dart';
-import 'package:recipe/domain/auth/value_objects.dart';
+import 'package:recipe/domain/facade/auth/user.dart';
+import 'package:recipe/domain/facade/auth/value_objects.dart';
 import 'package:recipe/domain/core/value_object.dart';
 
 @lazySingleton
 class FirebaseUserMapper {
-  User? toDomain(_google.User? _) {
+  User? toDomain(google.User? _) {
     if (_ == null) {
       return null;
     }
