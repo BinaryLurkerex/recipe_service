@@ -24,6 +24,9 @@ class RecipeApp extends StatelessWidget {
           useMaterial3: true,
           brightness: Brightness.light,
           fontFamily: 'SF-Pro',
+          // textTheme: TextTheme(
+          // TODO: replace appTextStyle factories with default TextTheme Provider
+          // ),
           colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: const Color(0xFFF6925C),
             secondary: const Color(0xFFF37552),
