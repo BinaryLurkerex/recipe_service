@@ -8,9 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:recipe/application/auth/auth_bloc.dart';
-import 'package:recipe/domain/auth/auth_facade.dart';
-import 'package:recipe/domain/auth/auth_failure.dart';
-import 'package:recipe/domain/auth/value_objects.dart';
+import 'package:recipe/domain/facade/auth/auth_facade.dart';
+import 'package:recipe/domain/facade/auth/auth_failure.dart';
+import 'package:recipe/domain/facade/auth/value_objects.dart';
 import 'package:recipe/infrastucture/core/injector.dart';
 
 part 'sign_in_event.dart';
