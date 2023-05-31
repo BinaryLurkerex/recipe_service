@@ -45,6 +45,7 @@ app.*.map.json
 *.freezed.dart
 
 # Security related
+*.pem
 *.keystore
 lib/firebase_options.dart
 android/app/google-services.json
