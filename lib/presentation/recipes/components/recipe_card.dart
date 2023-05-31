@@ -69,7 +69,7 @@ class RecipeCard extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: Icon(
@@ -78,23 +78,23 @@ class RecipeCard extends StatelessWidget {
                           size: 8.0,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(2.0),
+                      const Padding(
+                        padding: EdgeInsets.all(2.0),
                         child: Icon(
                           CupertinoIcons.circle_filled,
                           color: Colors.black54,
                           size: 8.0,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(2.0),
+                      const Padding(
+                        padding: EdgeInsets.all(2.0),
                         child: Icon(
                           CupertinoIcons.circle_filled,
                           color: Colors.black54,
                           size: 8.0,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                     ],
                   ),
                 ),

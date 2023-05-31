@@ -10,16 +10,14 @@
 .svn/
 migrate_working_dir/
 
-# IntelliJ related
+# IDE related
 *.iml
 *.ipr
 *.iws
 .idea/
-
-# VSCode related
 .vscode/
 
-# Flutter/Dart/Pub related
+# Flutter related
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
@@ -28,16 +26,15 @@ migrate_working_dir/
 .packages
 .pub-cache/
 .pub/
+.metadata
 /build/
 pubspec.lock
 
-# Symbolication related
+# Symbols related
 app.*.symbols
-
-# Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
+# Build stuff
 /android/app/debug
 /android/app/profile
 /android/app/release
@@ -47,7 +44,6 @@ app.*.map.json
 *.gr.dart
 *.freezed.dart
 
-# Privacy related
-lib/firebase_options.dart
-ios/firebase_app_id_file.json
+# Security related
 *.keystore
+lib/firebase_options.dart

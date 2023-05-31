@@ -1,4 +1,4 @@
-package com.fox.recipe
+package com.example.recipe_service
 
 import io.flutter.embedding.android.FlutterActivity
 

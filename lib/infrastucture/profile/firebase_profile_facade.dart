@@ -11,6 +11,7 @@ import 'package:recipe/domain/facade/profile/value_ojects.dart';
 @prod
 @LazySingleton(as: ProfileFacade)
 class FirebaseProfileFacade implements ProfileFacade {
+  // ignore: unused_field
   final google.FirebaseAuth _firebaseAuth;
 
   FirebaseProfileFacade(
