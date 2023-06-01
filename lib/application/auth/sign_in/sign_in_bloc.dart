@@ -7,11 +7,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:recipe_service/application/auth/auth_bloc.dart';
 import 'package:recipe_service/domain/facade/auth/auth_facade.dart';
 import 'package:recipe_service/domain/facade/auth/auth_failure.dart';
 import 'package:recipe_service/domain/facade/auth/value_objects.dart';
-import 'package:recipe_service/infrastucture/core/injector.dart';
 
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';
@@ -25,7 +23,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc(this._authFacade) : super(SignInState.initial()) {
     on<EmailChangeEvent>(_onEmailChangeEvent);
     on<PasswordChangeEvent>(_onPasswordChangeEvent);
-    on<SingUpWithEmailAndPasswordEnent>(_onSingUpWithEmailAndPasswordEnent);
+    on<SingUpWithEmailAndPasswordEvent>(_onSingUpWithEmailAndPasswordEnent);
     on<SignInWithEmailAndPasswordEvent>(_onSignInWithEmailAndPasswordEvent);
     on<SignInWithGoogleEvent>(_onSignInWithGoogleEvent);
   }
@@ -44,26 +42,16 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     ));
   }
 
-  FutureOr<void> _onSingUpWithEmailAndPasswordEnent(SingUpWithEmailAndPasswordEnent event, Emitter<SignInState> emit) async {
+  FutureOr<void> _onSingUpWithEmailAndPasswordEnent(SingUpWithEmailAndPasswordEvent event, Emitter<SignInState> emit) async {
     await _performActionOnAuthFacadeWithEmailAndPassword(
       _authFacade.signInWithEmailAndPassword,
     );
-
-    if (kDebugMode) {
-      final AuthBloc authBloc = getIt<AuthBloc>();
-      authBloc.add(const AuthEvent.authCheck());
-    }
   }
 
   FutureOr<void> _onSignInWithEmailAndPasswordEvent(SignInWithEmailAndPasswordEvent event, Emitter<SignInState> emit) async {
     await _performActionOnAuthFacadeWithEmailAndPassword(
       _authFacade.signInWithEmailAndPassword,
     );
-
-    if (kDebugMode) {
-      final AuthBloc authBloc = getIt<AuthBloc>();
-      authBloc.add(const AuthEvent.authCheck());
-    }
   }
 
   FutureOr<void> _onSignInWithGoogleEvent(SignInWithGoogleEvent event, Emitter<SignInState> emit) async {
