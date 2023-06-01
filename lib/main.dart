@@ -3,9 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:recipe_service/application/auth/auth_bloc.dart';
 import 'package:recipe_service/infrastucture/core/injector.dart';
-import 'package:recipe_service/presentation/recipes/recipes_page.dart';
-import 'package:recipe_service/presentation/settings/settings_page.dart';
-import 'package:recipe_service/presentation/sign_in/sign_in_page.dart';
 import 'package:recipe_service/presentation/splash/splash_page.dart';
 
 void main() async {
@@ -39,28 +36,7 @@ class RecipeApp extends StatelessWidget {
             background: const Color(0xFFE7EEFB),
           ),
         ),
-        initialRoute: '/',
-        onGenerateRoute: (RouteSettings settings) {
-          return MaterialPageRoute(
-            builder: (context) {
-              switch (settings.name) {
-                case '/':
-                  return const SplashPage();
-
-                case '/signin':
-                  return const SignInPage();
-
-                case '/home':
-                  return const RecipePage();
-
-                case '/settings':
-                  return const SettingsPage();
-              }
-
-              return const Placeholder();
-            },
-          );
-        },
+        home: const SplashPage(),
       ),
     );
   }

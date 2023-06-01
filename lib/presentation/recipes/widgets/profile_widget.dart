@@ -5,6 +5,7 @@ import 'package:recipe_service/presentation/core/app_text_style.dart';
 import 'package:recipe_service/presentation/recipes/components/profile_bar.dart';
 import 'package:recipe_service/presentation/recipes/components/recipe_card.dart';
 import 'package:recipe_service/presentation/recipes/components/title_bar.dart';
+import 'package:recipe_service/presentation/settings/settings_page.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
@@ -74,8 +75,9 @@ class _Buttons extends StatelessWidget {
               Expanded(
                 child: FilledButton(
                   onPressed: () {
-                    //TODO: Open settings
-                    // AutoRouter.of(context).push(const SettingsRoute());
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const SettingsPage()),
+                    );
                   },
                   style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(

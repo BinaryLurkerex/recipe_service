@@ -5,6 +5,8 @@ import 'package:recipe_service/application/auth/auth_bloc.dart';
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
+  static const route = '/settings';
+
   @override
   Widget build(BuildContext context) {
     final AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
@@ -20,6 +22,7 @@ class SettingsPage extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     authBloc.add(const AuthEvent.signOut());
+                    Navigator.pop(context);
                   },
                   child: const Text(
                     'Sign Out',

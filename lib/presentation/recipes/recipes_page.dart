@@ -11,6 +11,8 @@ import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 class RecipePage extends StatefulWidget {
   const RecipePage({super.key});
 
+  static const route = '/';
+
   @override
   State<RecipePage> createState() => _RecipePageState();
 }

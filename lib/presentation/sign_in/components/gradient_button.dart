@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
+part of '../sign_in_page.dart';
 
-class GradientButton extends StatelessWidget {
+class _GradientButton extends StatelessWidget {
   final Function()? onPressed;
   final Gradient gradient;
   final Widget child;
 
-  const GradientButton({
-    super.key,
+  const _GradientButton({
     this.onPressed,
     required this.gradient,
     required this.child,
