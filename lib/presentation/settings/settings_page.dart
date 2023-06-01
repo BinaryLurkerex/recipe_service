@@ -12,6 +12,11 @@ class SettingsPage extends StatelessWidget {
     final AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Settings',
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32.0),
         child: SafeArea(
