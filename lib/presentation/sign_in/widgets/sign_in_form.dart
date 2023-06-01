@@ -19,6 +19,7 @@ class SignInForm extends StatelessWidget {
                 BlocProvider.of<AuthBloc>(context).add(
                   const AuthEvent.authCheck(),
                 );
+                Navigator.of(context).pop();
               },
             ),
           },
@@ -28,10 +29,8 @@ class SignInForm extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const _Content(),
+              const Expanded(child: _Content()),
               _OptionButtons(
                 onSignUpPressed: () {
                   Navigator.of(context).push(
@@ -67,22 +66,25 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SvgPicture.asset(_loginSvgPath),
-          const Text(
-            'Recipes',
-            textAlign: TextAlign.center,
-          ),
-          const Text(
-            'By mof mfua Students',
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        SvgPicture.asset(_loginSvgPath),
+        Column(
+          children: [
+            Text(
+              'Recipes',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(color: Colors.black),
+            ),
+            Text(
+              'By mfua Students',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.black),
+            ),
+          ],
+        )
+      ],
     );
   }
 }
@@ -104,16 +106,32 @@ class _OptionButtons extends StatelessWidget {
         maxWidth: 320.0,
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
-          _GradientButton(
+          //TODO: Solve size fail
+
+          // _GradientButton(
+          //   onPressed: onSignUpPressed,
+          //   gradient: DefaultGradient(context),
+          //   child: SizedBox(
+          //     width: double.infinity,
+          //     child: Text(
+          //       'Sign Up',
+          //       textAlign: TextAlign.center,
+          //       style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.black),
+          //     ),
+          //   ),
+          // ),
+          FilledButton(
             onPressed: onSignUpPressed,
-            gradient: DefaultGradient(context),
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(Colors.white),
+            ),
             child: SizedBox(
               width: double.infinity,
               child: Text(
                 'Sign Up',
                 textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
               ),
             ),
           ),
@@ -128,6 +146,7 @@ class _OptionButtons extends StatelessWidget {
               child: Text(
                 'Log In',
                 textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
               ),
             ),
           ),

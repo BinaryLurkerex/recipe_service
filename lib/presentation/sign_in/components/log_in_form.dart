@@ -11,7 +11,10 @@ class _LogInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Log In'),
+        title: Text(
+          'Log In',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -59,6 +62,7 @@ class _LogInForm extends StatelessWidget {
                         hintText: 'Email',
                         errorText: state.emailAddress.value.fold(
                           (failure) => failure.mapOrNull(
+                            empty: (_) => null,
                             invalidEmail: (_) => 'Invalid Email',
                           ),
                           (_) => null,
@@ -81,6 +85,7 @@ class _LogInForm extends StatelessWidget {
                         hintText: 'Password',
                         errorText: state.password.value.fold(
                           (failure) => failure.mapOrNull(
+                            empty: (_) => null,
                             shortPassword: (_) => 'Password must contain at least 6 symbols',
                           ),
                           (_) => null,
@@ -104,6 +109,7 @@ class _LogInForm extends StatelessWidget {
                       child: Text(
                         'Log In',
                         textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
                       ),
                     ),
                     const SizedBox(height: 8.0),
@@ -123,6 +129,7 @@ class _LogInForm extends StatelessWidget {
                         child: Text(
                           'Sign in with Google',
                           textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
                         ),
                       ),
                     ),

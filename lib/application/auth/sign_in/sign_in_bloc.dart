@@ -1,5 +1,3 @@
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
@@ -43,15 +41,11 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   FutureOr<void> _onSingUpWithEmailAndPasswordEnent(SingUpWithEmailAndPasswordEvent event, Emitter<SignInState> emit) async {
-    await _performActionOnAuthFacadeWithEmailAndPassword(
-      _authFacade.signInWithEmailAndPassword,
-    );
+    await _callOnAuthFacadeWithEmailAndPassword(emit, _authFacade.registerWithEmailAndPassword);
   }
 
   FutureOr<void> _onSignInWithEmailAndPasswordEvent(SignInWithEmailAndPasswordEvent event, Emitter<SignInState> emit) async {
-    await _performActionOnAuthFacadeWithEmailAndPassword(
-      _authFacade.signInWithEmailAndPassword,
-    );
+    await _callOnAuthFacadeWithEmailAndPassword(emit, _authFacade.signInWithEmailAndPassword);
   }
 
   FutureOr<void> _onSignInWithGoogleEvent(SignInWithGoogleEvent event, Emitter<SignInState> emit) async {
@@ -67,7 +61,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     ));
   }
 
-  Future<void> _performActionOnAuthFacadeWithEmailAndPassword(
+  Future<void> _callOnAuthFacadeWithEmailAndPassword(
+    Emitter<SignInState> emit,
     Future<Either<AuthFailure, Unit>> Function({
       required EmailAddress emailAddress,
       required Password password,
@@ -81,6 +76,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     if (isEmailValid && isPasswordValid) {
       emit(state.copyWith(
         isSubmitting: true,
+        showErrorMessages: false,
         authFailureOrSuccessOption: none(),
       ));
 
@@ -88,16 +84,20 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         emailAddress: state.emailAddress,
         password: state.password,
       );
-    } else {
-      failureOrSuccess = const Left(
-        AuthFailure.invalidEmailOrPassword(),
-      );
-    }
 
-    emit(state.copyWith(
-      isSubmitting: false,
-      showErrorMessages: true,
-      authFailureOrSuccessOption: optionOf(failureOrSuccess),
-    ));
+      emit(state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: true,
+        authFailureOrSuccessOption: optionOf(failureOrSuccess),
+      ));
+    } else {
+      emit(state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: true,
+        authFailureOrSuccessOption: optionOf(const Left(
+          AuthFailure.invalidEmailOrPassword(),
+        )),
+      ));
+    }
   }
 }

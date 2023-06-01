@@ -16,7 +16,28 @@ class _SignUpForm extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(32.0),
-          child: BlocBuilder<SignInBloc, SignInState>(
+          child: BlocConsumer<SignInBloc, SignInState>(
+            listener: (context, state) {
+              state.authFailureOrSuccessOption.fold(
+                () => null,
+                (authFailureOrUnit) => authFailureOrUnit.fold(
+                  (failure) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          failure.map<String>(
+                            serverError: (_) => 'Server Error',
+                            emailAlreadyInUse: (_) => 'This Email Already Exist',
+                            invalidEmailOrPassword: (_) => 'Invalid Email Or Password',
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  (unit) => null,
+                ),
+              );
+            },
             bloc: signInBloc,
             builder: (context, state) {
               if (state.isSubmitting) {
@@ -81,6 +102,7 @@ class _SignUpForm extends StatelessWidget {
                       child: Text(
                         'Sign up',
                         textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
                       ),
                     ),
                     const SizedBox(height: 8.0),
@@ -100,6 +122,7 @@ class _SignUpForm extends StatelessWidget {
                         child: Text(
                           'Sign in with Google',
                           textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
                         ),
                       ),
                     ),
