@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_service/application/auth/auth_bloc.dart';
-import 'package:recipe_service/presentation/core/app_text_style.dart';
-import 'package:recipe_service/presentation/recipes/components/profile_bar.dart';
-import 'package:recipe_service/presentation/recipes/components/recipe_card.dart';
-import 'package:recipe_service/presentation/recipes/components/title_bar.dart';
-import 'package:recipe_service/presentation/settings/settings_page.dart';
+part of 'package:recipe_service/presentation/recipes/recipes_page.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
@@ -15,24 +8,28 @@ class ProfileWidget extends StatelessWidget {
     final authBloc = BlocProvider.of<AuthBloc>(context);
 
     return Scaffold(
-      appBar: TitleBar(
-        title: authBloc.state.mapOrNull(authenticated: (value) => value.user.name) ?? 'User',
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text(authBloc.state.mapOrNull(authenticated: (value) => value.user.name) ?? 'User'),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      body: CustomScrollView(
-        slivers: [
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: _Buttons(),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: _Buttons(),
+              ),
             ),
-          ),
-          SliverList.builder(
-            itemCount: 20,
-            itemBuilder: (_, index) {
-              return const RecipeCard();
-            },
-          ),
-        ],
+            SliverList.builder(
+              itemCount: 20,
+              itemBuilder: (_, index) {
+                return const _RecipeCard();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -46,7 +43,7 @@ class _Buttons extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const ProfileBar(),
+        const _ProfileBar(),
         Padding(
           padding: const EdgeInsets.symmetric(
             vertical: 16.0,
@@ -65,7 +62,7 @@ class _Buttons extends StatelessWidget {
                   ),
                   child: Text(
                     'Edit Profile',
-                    style: AppTextStyle.dark().body,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
                   ),
                 ),
               ),
@@ -76,7 +73,9 @@ class _Buttons extends StatelessWidget {
                 child: FilledButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const SettingsPage()),
+                      MaterialPageRoute(
+                        builder: (_) => const SettingsPage(),
+                      ),
                     );
                   },
                   style: const ButtonStyle(
@@ -86,7 +85,7 @@ class _Buttons extends StatelessWidget {
                   ),
                   child: Text(
                     'Settings',
-                    style: AppTextStyle.dark().body,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
                   ),
                 ),
               ),
@@ -95,9 +94,93 @@ class _Buttons extends StatelessWidget {
         ),
         Text(
           'Posts',
-          style: AppTextStyle.dark().display,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
+        ),
+        const SizedBox(height: 8.0),
+      ],
+    );
+  }
+}
+
+class _ProfileBar extends StatelessWidget {
+  const _ProfileBar();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: FittedBox(
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+        ),
+        const Expanded(
+          flex: 3,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: _ProfilePin(
+                  value: '2',
+                  title: 'Posts',
+                  padding: EdgeInsets.all(8.0),
+                ),
+              ),
+              Expanded(
+                child: _ProfilePin(
+                  value: '2',
+                  title: 'Followers',
+                  padding: EdgeInsets.all(8.0),
+                ),
+              ),
+              Expanded(
+                child: _ProfilePin(
+                  value: '2',
+                  title: 'Following',
+                  padding: EdgeInsets.all(8.0),
+                ),
+              ),
+            ],
+          ),
         ),
       ],
+    );
+  }
+}
+
+class _ProfilePin extends StatelessWidget {
+  final String value;
+  final String title;
+  final EdgeInsets padding;
+
+  const _ProfilePin({
+    required this.value,
+    required this.title,
+    required this.padding,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: padding,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            value,
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.black),
+          ),
+          const SizedBox(
+            height: 8.0,
+          ),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black),
+          ),
+        ],
+      ),
     );
   }
 }

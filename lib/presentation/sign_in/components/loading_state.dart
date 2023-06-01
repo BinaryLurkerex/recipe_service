@@ -1,4 +1,4 @@
-part of '../sign_in_page.dart';
+part of 'package:recipe_service/presentation/sign_in/sign_in_page.dart';
 
 class _LoadingState extends StatelessWidget {
   const _LoadingState();

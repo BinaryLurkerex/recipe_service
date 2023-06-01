@@ -29,8 +29,9 @@ class SettingsPage extends StatelessWidget {
                     authBloc.add(const AuthEvent.signOut());
                     Navigator.pop(context);
                   },
-                  child: const Text(
+                  child: Text(
                     'Sign Out',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
                   ),
                 ),
               ],

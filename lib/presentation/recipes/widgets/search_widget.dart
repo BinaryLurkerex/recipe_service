@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:recipe_service/presentation/core/app_text_style.dart';
-import 'package:recipe_service/presentation/recipes/components/title_bar.dart';
+part of 'package:recipe_service/presentation/recipes/recipes_page.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({super.key});
@@ -8,27 +6,31 @@ class SearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TitleBar(
-        title: 'Search',
+      appBar: AppBar(
+        centerTitle: false,
+        title: const Text('Search'),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const TextField(
-              decoration: InputDecoration(
-                hintText: 'Ingredient',
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: Text(
-                  'There`s no ingredients yet',
-                  style: AppTextStyle.dark().headline,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              const TextField(
+                decoration: InputDecoration(
+                  hintText: 'Ingredient',
                 ),
               ),
-            ),
-          ],
+              Expanded(
+                child: Center(
+                  child: Text(
+                    'There`s no ingredients yet',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.black),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

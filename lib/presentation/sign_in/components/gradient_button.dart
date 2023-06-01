@@ -1,4 +1,4 @@
-part of '../sign_in_page.dart';
+part of 'package:recipe_service/presentation/sign_in/sign_in_page.dart';
 
 class _GradientButton extends StatelessWidget {
   final Function()? onPressed;

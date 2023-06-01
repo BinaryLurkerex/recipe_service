@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:recipe_service/presentation/recipes/components/recipe_card.dart';
-import 'package:recipe_service/presentation/recipes/components/title_bar.dart';
+part of 'package:recipe_service/presentation/recipes/recipes_page.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});
@@ -8,14 +6,18 @@ class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TitleBar(
-        title: 'Fruit Service',
+      appBar: AppBar(
+        centerTitle: false,
+        title: const Text('Fruit Service'),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      body: ListView.builder(
-        itemCount: 20,
-        itemBuilder: (context, index) {
-          return const RecipeCard();
-        },
+      body: SafeArea(
+        child: ListView.builder(
+          itemCount: 20,
+          itemBuilder: (context, index) {
+            return const _RecipeCard();
+          },
+        ),
       ),
     );
   }

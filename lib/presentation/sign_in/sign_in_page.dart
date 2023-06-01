@@ -7,13 +7,13 @@ import 'package:recipe_service/infrastucture/core/injector.dart';
 import 'package:recipe_service/presentation/core/default_gradient.dart';
 
 //! COMPONENTS
-part './components/gradient_button.dart';
-part './components/loading_state.dart';
-part './components/log_in_form.dart';
-part './components/sign_up_form.dart';
+part 'package:recipe_service/presentation/sign_in/components/gradient_button.dart';
+part 'package:recipe_service/presentation/sign_in/components/loading_state.dart';
+part 'package:recipe_service/presentation/sign_in/components/log_in_form.dart';
+part 'package:recipe_service/presentation/sign_in/components/sign_up_form.dart';
 
 //! WIDGETS
-part './widgets/sign_in_form.dart';
+part 'package:recipe_service/presentation/sign_in/widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});

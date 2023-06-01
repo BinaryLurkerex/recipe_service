@@ -1,4 +1,4 @@
-part of '../sign_in_page.dart';
+part of 'package:recipe_service/presentation/sign_in/sign_in_page.dart';
 
 class _SignUpForm extends StatelessWidget {
   final SignInBloc signInBloc;
@@ -102,7 +102,7 @@ class _SignUpForm extends StatelessWidget {
                       child: Text(
                         'Sign up',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
                       ),
                     ),
                     const SizedBox(height: 8.0),
@@ -122,7 +122,7 @@ class _SignUpForm extends StatelessWidget {
                         child: Text(
                           'Sign in with Google',
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
                         ),
                       ),
                     ),

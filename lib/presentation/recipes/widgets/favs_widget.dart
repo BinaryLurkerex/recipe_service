@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:recipe_service/presentation/recipes/components/recipe_card.dart';
-import 'package:recipe_service/presentation/recipes/components/title_bar.dart';
+part of 'package:recipe_service/presentation/recipes/recipes_page.dart';
 
 class FavsWidget extends StatelessWidget {
   const FavsWidget({super.key});
@@ -8,14 +6,18 @@ class FavsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TitleBar(
-        title: 'Favorites',
+      appBar: AppBar(
+        centerTitle: false,
+        title: const Text('Favorites'),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      body: ListView.builder(
-        itemCount: 20,
-        itemBuilder: (_, index) {
-          return const RecipeCard();
-        },
+      body: SafeArea(
+        child: ListView.builder(
+          itemCount: 20,
+          itemBuilder: (_, index) {
+            return const _RecipeCard();
+          },
+        ),
       ),
     );
   }

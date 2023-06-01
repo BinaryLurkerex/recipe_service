@@ -1,4 +1,4 @@
-part of '../sign_in_page.dart';
+part of 'package:recipe_service/presentation/sign_in/sign_in_page.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({super.key});
@@ -107,20 +107,6 @@ class _OptionButtons extends StatelessWidget {
       ),
       child: Column(
         children: [
-          //TODO: Solve size fail
-
-          // _GradientButton(
-          //   onPressed: onSignUpPressed,
-          //   gradient: DefaultGradient(context),
-          //   child: SizedBox(
-          //     width: double.infinity,
-          //     child: Text(
-          //       'Sign Up',
-          //       textAlign: TextAlign.center,
-          //       style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.black),
-          //     ),
-          //   ),
-          // ),
           FilledButton(
             onPressed: onSignUpPressed,
             style: const ButtonStyle(
@@ -131,11 +117,11 @@ class _OptionButtons extends StatelessWidget {
               child: Text(
                 'Sign Up',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
               ),
             ),
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 4.0),
           FilledButton(
             onPressed: onLogInPressed,
             style: const ButtonStyle(
@@ -146,7 +132,7 @@ class _OptionButtons extends StatelessWidget {
               child: Text(
                 'Log In',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
               ),
             ),
           ),

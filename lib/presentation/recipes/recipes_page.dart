@@ -1,12 +1,22 @@
 import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe_service/presentation/recipes/widgets/favs_widget.dart';
-import 'package:recipe_service/presentation/recipes/widgets/home_widget.dart';
-import 'package:recipe_service/presentation/recipes/widgets/post_widget.dart';
-import 'package:recipe_service/presentation/recipes/widgets/profile_widget.dart';
-import 'package:recipe_service/presentation/recipes/widgets/search_widget.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_service/application/auth/auth_bloc.dart';
+import 'package:recipe_service/presentation/settings/settings_page.dart';
+
+//! COMPONENTS
+
+part 'package:recipe_service/presentation/recipes/components/recipe_card.dart';
+
+//! WIDGETS
+
+part 'package:recipe_service/presentation/recipes/widgets/home_widget.dart';
+part 'package:recipe_service/presentation/recipes/widgets/search_widget.dart';
+part 'package:recipe_service/presentation/recipes/widgets/post_widget.dart';
+part 'package:recipe_service/presentation/recipes/widgets/favs_widget.dart';
+part 'package:recipe_service/presentation/recipes/widgets/profile_widget.dart';
 
 class RecipePage extends StatefulWidget {
   const RecipePage({super.key});

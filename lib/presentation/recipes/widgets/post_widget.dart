@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:recipe_service/presentation/core/app_text_style.dart';
-import 'package:recipe_service/presentation/recipes/components/title_bar.dart';
+part of 'package:recipe_service/presentation/recipes/recipes_page.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget({super.key});
@@ -9,38 +6,35 @@ class PostWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TitleBar(
-        title: 'Post New Recipe',
+      appBar: AppBar(
+        centerTitle: false,
+        title: const Text('Post New Recipe'),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         actions: [
-          InkWell(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Continue',
-                style: AppTextStyle.dark().headline.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-              ),
-            ),
-            onTap: () {
-              //TODO: implement onDoneMethod
+          TextButton(
+            onPressed: () {
+              //TODO: Handle continue button
             },
+            child: const Text(
+              'Continue',
+            ),
           ),
         ],
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: _PostName(),
-          ),
-          SliverToBoxAdapter(
-            child: _Images(),
-          ),
-          SliverToBoxAdapter(
-            child: _Ingredients(),
-          ),
-        ],
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: _PostName(),
+            ),
+            SliverToBoxAdapter(
+              child: _Images(),
+            ),
+            SliverToBoxAdapter(
+              child: _Ingredients(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -56,7 +50,7 @@ class _PostName extends StatelessWidget {
         children: [
           Text(
             'Name your recipe',
-            style: AppTextStyle.dark().body,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black),
           ),
           const TextField(
             decoration: InputDecoration(
@@ -79,7 +73,7 @@ class _Ingredients extends StatelessWidget {
         children: [
           Text(
             'Select ingredients',
-            style: AppTextStyle.dark().body,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black),
           ),
           Card(
             margin: const EdgeInsets.symmetric(
@@ -96,7 +90,7 @@ class _Ingredients extends StatelessWidget {
                   const SizedBox(width: 8.0),
                   Text(
                     'Add',
-                    style: AppTextStyle.dark().headline,
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black),
                   ),
                 ],
               ),
@@ -122,7 +116,7 @@ class _Images extends StatelessWidget {
             ),
             child: Text(
               'Upload photos',
-              style: AppTextStyle.dark().body,
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black),
             ),
           ),
           SizedBox(
