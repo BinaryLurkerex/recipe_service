@@ -1,13 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_service/app_router.gr.dart';
 import 'package:recipe_service/application/auth/auth_bloc.dart';
 import 'package:recipe_service/presentation/core/app_text_style.dart';
 import 'package:recipe_service/presentation/recipes/components/profile_bar.dart';
 import 'package:recipe_service/presentation/recipes/components/recipe_card.dart';
 import 'package:recipe_service/presentation/recipes/components/title_bar.dart';
-import 'package:recipe_service/presentation/settings/settings_page.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
@@ -77,8 +74,8 @@ class _Buttons extends StatelessWidget {
               Expanded(
                 child: FilledButton(
                   onPressed: () {
-                    AutoRouter.of(context).push(const SettingsRoute());
-                    // AutoRouter.of(context).pushWidget(const SettingsPage());
+                    //TODO: Open settings
+                    // AutoRouter.of(context).push(const SettingsRoute());
                   },
                   style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(

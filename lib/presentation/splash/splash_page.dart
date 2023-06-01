@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_service/application/auth/auth_bloc.dart';
@@ -6,7 +5,6 @@ import 'package:recipe_service/presentation/core/default_gradient.dart';
 import 'package:recipe_service/presentation/recipes/recipes_page.dart';
 import 'package:recipe_service/presentation/sign_in/sign_in_page.dart';
 
-@RoutePage()
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 

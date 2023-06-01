@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:recipe_service/presentation/recipes/widgets/profile_widget.dart'
 import 'package:recipe_service/presentation/recipes/widgets/search_widget.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 
-@RoutePage()
 class RecipePage extends StatefulWidget {
   const RecipePage({super.key});
 
@@ -24,8 +22,6 @@ class _RecipePageState extends State<RecipePage> {
     setState(() {
       pageController.jumpToPage(
         page,
-        // duration: const Duration(milliseconds: 400),
-        // curve: Curves.easeOut,
       );
     });
   }

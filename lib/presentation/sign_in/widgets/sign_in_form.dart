@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,8 +65,6 @@ class _Buttons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<SignInBloc>(context);
-
     return Container(
       alignment: Alignment.bottomCenter,
       constraints: const BoxConstraints(
@@ -78,9 +75,11 @@ class _Buttons extends StatelessWidget {
         children: [
           GradientButton(
             onPressed: () {
-              AutoRouter.of(context).pushWidget(
-                _SignUpForm(bloc),
-              );
+              //TODO: Open SignUp Form
+
+              // AutoRouter.of(context).pushWidget(
+              //   _SignUpForm(bloc),
+              // );
             },
             gradient: DefaultGradient(context),
             child: SizedBox(
@@ -95,9 +94,11 @@ class _Buttons extends StatelessWidget {
           const SizedBox(height: 8.0),
           FilledButton(
             onPressed: () {
-              AutoRouter.of(context).pushWidget(
-                _LoginForm(bloc),
-              );
+              //TODO: OpenLogIn Form
+
+              // AutoRouter.of(context).pushWidget(
+              //   _LoginForm(bloc),
+              // );
             },
             style: const ButtonStyle(
               backgroundColor: MaterialStatePropertyAll(
