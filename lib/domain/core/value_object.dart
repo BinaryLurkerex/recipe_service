@@ -15,7 +15,7 @@ abstract class ValueObject<T> {
   }
 
   @override
-  String toString() => 'ValueObject($value)';
+  String toString() => 'ValueObject(\n$value\n)';
 
   @override
   bool operator ==(covariant ValueObject other) {

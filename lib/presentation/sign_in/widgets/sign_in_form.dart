@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe_service/application/auth/sign_in/sign_in_bloc.dart';
+import 'package:recipe_service/domain/facade/auth/auth_failure.dart';
 import 'package:recipe_service/presentation/core/app_text_style.dart';
 import 'package:recipe_service/presentation/core/default_gradient.dart';
 import 'package:recipe_service/presentation/sign_in/components/gradient_button.dart';
@@ -134,11 +136,38 @@ class _LoginForm extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(32.0),
-          child: BlocBuilder<SignInBloc, SignInState>(
+          child: BlocConsumer<SignInBloc, SignInState>(
             bloc: bloc,
+            listener: (context, state) {
+              if (state.showErrorMessages) {
+                Scaffold.of(context).showBottomSheet(
+                  (context) => BottomSheet(
+                    onClosing: () => '',
+                    builder: (context) {
+                      return Text(
+                        state.authFailureOrSuccessOption.fold(
+                          () => 'NO_STATE',
+                          (authFailureOrSuccess) {
+                            return authFailureOrSuccess.fold(
+                              (AuthFailure failure) => failure.map(
+                                serverError: (_) => 'SERVER_ERROR',
+                                emailAlreadyInUse: (_) => 'EMAIL_ALREADY_IN_USE',
+                                invalidEmailOrPassword: (_) => 'INVALID_EMAIL_OR_PASSWORD',
+                              ),
+                              (Unit success) => 'SUCCESS',
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                );
+              }
+            },
             builder: (context, state) {
-              debugPrint(state.emailAddress.value.toString());
-              debugPrint(state.password.value.toString());
+              if (state.isSubmitting) {
+                return const _Loading();
+              }
 
               return Form(
                 autovalidateMode: AutovalidateMode.always,
@@ -264,8 +293,9 @@ class _SignUpForm extends StatelessWidget {
           child: BlocBuilder<SignInBloc, SignInState>(
             bloc: bloc,
             builder: (context, state) {
-              debugPrint(state.emailAddress.value.toString());
-              debugPrint(state.password.value.toString());
+              if (state.isSubmitting) {
+                return const _Loading();
+              }
 
               return Form(
                 autovalidateMode: AutovalidateMode.always,
@@ -352,6 +382,19 @@ class _SignUpForm extends StatelessWidget {
             },
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _Loading extends StatelessWidget {
+  const _Loading();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: CircularProgressIndicator(
+        strokeWidth: 1.0,
       ),
     );
   }

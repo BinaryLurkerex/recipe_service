@@ -16,8 +16,11 @@ class RecipeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AuthBloc authBloc = getIt<AuthBloc>();
+    authBloc.add(const AuthEvent.authCheck());
+
     return BlocProvider(
-      create: (context) => getIt<AuthBloc>(),
+      create: (context) => authBloc,
       child: MaterialApp.router(
         title: 'Recipe Service',
         theme: ThemeData(

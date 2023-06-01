@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_service/app_router.gr.dart';
 import 'package:recipe_service/application/auth/auth_bloc.dart';
 import 'package:recipe_service/presentation/core/default_gradient.dart';
+import 'package:recipe_service/presentation/recipes/recipes_page.dart';
+import 'package:recipe_service/presentation/sign_in/sign_in_page.dart';
 
 @RoutePage()
 class SplashPage extends StatelessWidget {
@@ -11,21 +12,15 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
+    return BlocBuilder<AuthBloc, AuthState>(
       bloc: BlocProvider.of<AuthBloc>(context),
-      listener: (context, state) {
-        state.mapOrNull(
-          authenticated: (_) => AutoRouter.of(context).pushAndPopUntil(
-            const RecipeRoute(),
-            predicate: (_) => false,
-          ),
-          unauthenticated: (_) => AutoRouter.of(context).pushAndPopUntil(
-            const SignInRoute(),
-            predicate: (_) => false,
-          ),
+      builder: (context, state) {
+        return state.map(
+          initial: (_) => _Loading(),
+          unauthenticated: (_) => const SignInPage(),
+          authenticated: (_) => const RecipePage(),
         );
       },
-      child: _Loading(),
     );
   }
 }
