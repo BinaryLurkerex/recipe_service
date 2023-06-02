@@ -1,7 +1,7 @@
 name: recipe_service
 description: Store your recipes and see what others are up to on our application
 publish_to: 'none'
-version: 0.1.0
+version: 0.2.0
 
 environment:
   sdk: '>=3.0.2 <4.0.0'
