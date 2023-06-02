@@ -67,3 +67,14 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(KtList<T> in
     ));
   }
 }
+
+Either<ValueFailure<String>, String> validateTime(String input) {
+  final DateTime? time = DateTime.tryParse(input);
+  if (time != null) {
+    return right(input);
+  } else {
+    return left(ValueFailure.empty(
+      failedValue: input,
+    ));
+  }
+}

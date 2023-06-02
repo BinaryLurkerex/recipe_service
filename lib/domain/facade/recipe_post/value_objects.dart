@@ -41,3 +41,27 @@ class PostData extends ValueObject<String> {
 
   const PostData._(this.value);
 }
+
+class Timestamp extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory Timestamp(String input) {
+    return Timestamp._(validateStringNotEmpty(input).flatMap(validateTime));
+  }
+
+  const Timestamp._(this.value);
+}
+
+class Comment extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory Comment(String input) {
+    return Comment._(
+      validateStringNotEmpty(input),
+    );
+  }
+
+  const Comment._(this.value);
+}

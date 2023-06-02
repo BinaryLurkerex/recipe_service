@@ -24,4 +24,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     required T failedValue,
     required int max,
   }) = ListSize<T>;
+  const factory ValueFailure.invalidDate({
+    required T failedValue,
+  }) = InvalidDate<T>;
 }
