@@ -12,7 +12,7 @@
 ## How-To Build
 ```
 clone https://github.com/pocket-red-fox/Recipe-Service.git
-mv ./Recipe-Service ./recipe && cd ./recipe
+mv ./Recipe-Service ./recipe_service && cd ./recipe_service
 flutter pub get
 flutter packages pub run build_runner build
 flutter run
