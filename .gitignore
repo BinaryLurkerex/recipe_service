@@ -43,6 +43,7 @@ app.*.map.json
 *.g.dart
 *.gr.dart
 *.freezed.dart
+*.config.dart
 
 # Security related
 *.pem
