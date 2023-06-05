@@ -3,6 +3,7 @@ import 'package:kt_dart/kt.dart';
 import 'package:recipe_service/domain/core/value_object.dart';
 import 'package:recipe_service/domain/facade/recipe_post/post.dart';
 import 'package:recipe_service/domain/facade/recipe_post/recipes_failure.dart';
+import 'package:recipe_service/domain/facade/recipe_post/value_objects.dart';
 
 abstract class RecipesFacade {
   Future<Either<RecipesFailure, KtList<Post>>> getPopularPosts([int offset]);
@@ -12,5 +13,5 @@ abstract class RecipesFacade {
   Future<Either<RecipesFailure, Unit>> deletePost(UniqueId uid);
   Future<Either<RecipesFailure, Unit>> bookmarkPost(UniqueId uid);
   Future<Either<RecipesFailure, Unit>> likePost(UniqueId uid);
-  Future<Either<RecipesFailure, Unit>> commentPost(UniqueId uid, String comment);
+  Future<Either<RecipesFailure, Unit>> commentPost(UniqueId uid, Comment comment);
 }
