@@ -3,17 +3,17 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:recipe_service/domain/core/value_object.dart';
-import 'package:recipe_service/domain/facade/recipe_post/post.dart';
-import 'package:recipe_service/domain/facade/recipe_post/recipes_facade.dart';
-import 'package:recipe_service/domain/facade/recipe_post/recipes_failure.dart';
-import 'package:recipe_service/domain/facade/recipe_post/value_objects.dart';
+import 'package:recipe_service/domain/facade/application/application_entities.dart';
+import 'package:recipe_service/domain/facade/application/application_facade.dart';
+import 'package:recipe_service/domain/facade/application/application_failure.dart';
+import 'package:recipe_service/domain/facade/application/value_objects.dart';
 import 'package:recipe_service/infrastucture/local/entities/comment.dart';
 import 'package:recipe_service/infrastucture/local/entities/post.dart';
 import 'package:recipe_service/infrastucture/local/entities/profile.dart';
 import 'package:uuid/uuid.dart';
 
-@LazySingleton(as: RecipesFacade)
-class LocalRecipesFacade implements RecipesFacade {
+@LazySingleton(as: ApplicationFacade)
+class LocalApplicationFacade implements ApplicationFacade {
   static const _profilesPath = 'profiles';
   static const _postsPath = 'posts';
   static const _commentsPath = 'comments';
@@ -33,12 +33,12 @@ class LocalRecipesFacade implements RecipesFacade {
   late final Box<CommentModel> commentBox;
 
   @override
-  Future<Either<RecipesFailure, Unit>> bookmarkPost(UniqueId uid, UniqueId post) async {
+  Future<Either<ApplicationFailure, Unit>> bookmarkPost(UniqueId uid, UniqueId post) async {
     try {
       ProfileModel? model = profileBox.get(uid);
 
       if (model == null) {
-        return left(const RecipesFailure.missingPost());
+        return left(const ApplicationFailure.missingPost());
       }
 
       profileBox.put(
@@ -51,7 +51,7 @@ class LocalRecipesFacade implements RecipesFacade {
           bookmarks: model.bookmarks +
               [
                 post.value.getOrElse(
-                  () => throw const RecipesFailure.missingParametrs(),
+                  () => throw const ApplicationFailure.missingParametrs(),
                 ),
               ],
           following: model.following,
@@ -61,40 +61,40 @@ class LocalRecipesFacade implements RecipesFacade {
       return right(unit);
     } catch (_) {
       return left(
-        const RecipesFailure.insufficientPermissions(),
+        const ApplicationFailure.insufficientPermissions(),
       );
     }
   }
 
   @override
-  Future<Either<RecipesFailure, Unit>> commentPost(UniqueId uid, UniqueId post, Comment comment) async {
+  Future<Either<ApplicationFailure, Unit>> commentPost(UniqueId uid, UniqueId post, Comment comment) async {
     try {
       if (uid.isValid() && comment.isValid() && post.isValid()) {
         await commentBox.add(
           CommentModel(
             id: uuid.v4(),
             date: DateTime.now().toIso8601String(),
-            sender: uid.value.getOrElse(() => throw const RecipesFailure.missingParametrs()),
-            post: post.value.getOrElse(() => throw const RecipesFailure.missingParametrs()),
-            message: comment.value.getOrElse(() => throw const RecipesFailure.missingParametrs()),
+            sender: uid.value.getOrElse(() => throw const ApplicationFailure.missingParametrs()),
+            post: post.value.getOrElse(() => throw const ApplicationFailure.missingParametrs()),
+            message: comment.value.getOrElse(() => throw const ApplicationFailure.missingParametrs()),
           ),
         );
 
         return right(unit);
       } else {
-        return left(const RecipesFailure.missingParametrs());
+        return left(const ApplicationFailure.missingParametrs());
       }
     } catch (e) {
-      return left(const RecipesFailure.insufficientPermissions());
+      return left(const ApplicationFailure.insufficientPermissions());
     }
   }
 
   @override
-  Future<Either<RecipesFailure, Unit>> deletePost(UniqueId uid, UniqueId post) async {
+  Future<Either<ApplicationFailure, Unit>> deletePost(UniqueId uid, UniqueId post) async {
     try {
       if (uid.isValid() && post.isValid()) {
-        final PostModel? data = postBox.get(post.value.getOrElse(() => throw const RecipesFailure.missingParametrs()));
-        final String postSender = uid.value.getOrElse(() => throw const RecipesFailure.missingParametrs());
+        final PostModel? data = postBox.get(post.value.getOrElse(() => throw const ApplicationFailure.missingParametrs()));
+        final String postSender = uid.value.getOrElse(() => throw const ApplicationFailure.missingParametrs());
 
         if (data != null && data.publisher == postSender) {
           await postBox.delete(postSender);
@@ -102,41 +102,41 @@ class LocalRecipesFacade implements RecipesFacade {
           return right(unit);
         }
 
-        return left(const RecipesFailure.missingParametrs());
+        return left(const ApplicationFailure.missingParametrs());
       } else {
-        return left(const RecipesFailure.missingParametrs());
+        return left(const ApplicationFailure.missingParametrs());
       }
     } catch (_) {
-      return left(const RecipesFailure.insufficientPermissions());
+      return left(const ApplicationFailure.insufficientPermissions());
     }
   }
 
   @override
-  Future<Either<RecipesFailure, KtList<Post>>> getPopularPosts([int? offset]) {
+  Future<Either<ApplicationFailure, KtList<Post>>> getPopularPosts([int? offset]) {
     // TODO: implement getPopularPosts
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<RecipesFailure, KtList<Post>>> getUserBookmarkedPosts(UniqueId uuid, [int? offset]) {
+  Future<Either<ApplicationFailure, KtList<Post>>> getUserBookmarkedPosts(UniqueId uuid, [int? offset]) {
     // TODO: implement getUserBookmarkedPosts
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<RecipesFailure, KtList<Post>>> getUserPosts(UniqueId uuid, [int? offset]) {
+  Future<Either<ApplicationFailure, KtList<Post>>> getUserPosts(UniqueId uuid, [int? offset]) {
     // TODO: implement getUserPosts
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<RecipesFailure, Unit>> likePost(UniqueId uid, UniqueId post) {
+  Future<Either<ApplicationFailure, Unit>> likePost(UniqueId uid, UniqueId post) {
     // TODO: implement likePost
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<RecipesFailure, KtList<Post>>> uploadPost(Post post) {
+  Future<Either<ApplicationFailure, KtList<Post>>> uploadPost(Post post) {
     // TODO: implement uploadPost
     throw UnimplementedError();
   }
