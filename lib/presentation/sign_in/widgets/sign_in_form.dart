@@ -5,54 +5,29 @@ class SignInForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final signInBloc = BlocProvider.of<SignInBloc>(context);
-
-    return BlocListener<SignInBloc, SignInState>(
-      bloc: signInBloc,
-      listener: (context, state) {
-        /// Send [AuthEvent.authCheck] after succesful complete sign in
-        state.authFailureOrSuccessOption.map(
-          (failureOrUnit) => {
-            failureOrUnit.fold(
-              (failure) => null,
-              (unit) {
-                BlocProvider.of<AuthBloc>(context).add(
-                  const AuthEvent.authCheck(),
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Column(
+          children: [
+            const Expanded(child: _Content()),
+            _OptionButtons(
+              onSignUpPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const _SignUpForm(),
+                  ),
                 );
-                Navigator.of(context).pop();
+              },
+              onLogInPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const _LogInForm(),
+                  ),
+                );
               },
             ),
-          },
-        );
-      },
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            children: [
-              const Expanded(child: _Content()),
-              _OptionButtons(
-                onSignUpPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => _SignUpForm(
-                        signInBloc: signInBloc,
-                      ),
-                    ),
-                  );
-                },
-                onLogInPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => _LogInForm(
-                        signInBloc: signInBloc,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
+          ],
         ),
       ),
     );

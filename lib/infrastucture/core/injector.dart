@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -12,7 +11,6 @@ final getIt = GetIt.instance;
 
 @InjectableInit()
 Future<void> configureDependencies(String env) async {
-  await Firebase.initializeApp();
   await Hive.initFlutter();
 
   Hive.registerAdapter(CommentModelAdapter());

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_service/application/auth/auth_bloc.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -9,8 +7,6 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -26,7 +22,6 @@ class SettingsPage extends StatelessWidget {
               [
                 TextButton(
                   onPressed: () {
-                    authBloc.add(const AuthEvent.signOut());
                     Navigator.pop(context);
                   },
                   child: Text(

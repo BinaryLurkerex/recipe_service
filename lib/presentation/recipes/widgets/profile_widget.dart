@@ -5,12 +5,11 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authBloc = BlocProvider.of<AuthBloc>(context);
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text(authBloc.state.mapOrNull(authenticated: (value) => value.user.name) ?? 'User'),
+        title: const Text('Username'),
+        // title: Text(authBloc.state.mapOrNull(authenticated: (value) => value.user.name) ?? 'User'),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: SafeArea(
