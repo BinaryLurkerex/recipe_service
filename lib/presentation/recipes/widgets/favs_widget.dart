@@ -15,7 +15,14 @@ class FavsWidget extends StatelessWidget {
         child: ListView.builder(
           itemCount: 20,
           itemBuilder: (_, index) {
-            return const _RecipeCard();
+            return _RecipeCard(
+              post: Post(
+                id: UniqueId(),
+                owner: UniqueId(),
+                data: [],
+                likes: 0,
+              ),
+            );
           },
         ),
       ),

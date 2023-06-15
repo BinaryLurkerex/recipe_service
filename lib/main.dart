@@ -21,8 +21,8 @@ class RecipeApp extends StatelessWidget {
         brightness: Brightness.light,
         fontFamily: 'SF-Pro',
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: const Color(0xFFF6925C),
-          secondary: const Color(0xFFF37552),
+          primary: const Color(0xFF32C5FF),
+          secondary: const Color(0xFF44D7B6),
           background: const Color(0xFFE7EEFB),
         ),
       ),

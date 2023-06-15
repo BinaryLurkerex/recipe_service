@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'package:recipe_service/presentation/recipes/recipes_page.dart';
 
 class ProfileWidget extends StatelessWidget {
@@ -5,31 +6,80 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        title: const Text('Username'),
-        // title: Text(authBloc.state.mapOrNull(authenticated: (value) => value.user.name) ?? 'User'),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      ),
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            const SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: _Buttons(),
+    final bloc = BlocProvider.of<GlobalBloc>(context);
+
+    return BlocBuilder<GlobalBloc, GlobalState>(
+      bloc: bloc,
+      builder: (context, state) {
+        return state.map(
+          initial: (value) => const LoadingCard(),
+          data: (value) {
+            return Scaffold(
+              appBar: AppBar(
+                centerTitle: false,
+                title: Text(value.profile.username),
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               ),
-            ),
-            SliverList.builder(
-              itemCount: 20,
-              itemBuilder: (_, index) {
-                return const _RecipeCard();
-              },
-            ),
-          ],
-        ),
-      ),
+              body: SafeArea(
+                child: CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: _ProfileBar(
+                          avatar: value.profile.avatarUrl,
+                          posts: value.profile.posts,
+                          followers: value.profile.followers,
+                          following: value.profile.following,
+                        ),
+                      ),
+                    ),
+                    // const SliverToBoxAdapter(
+                    //   child: Padding(
+                    //     padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    //     child: _Buttons(),
+                    //   ),
+                    // ),
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          'Posts',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      ),
+                    ),
+                    if (value.profilePosts.size == 0)
+                      Padding(
+                        padding: const EdgeInsets.all(32.0),
+                        child: Center(
+                          child: Text(
+                            'There`s no posts yet',
+                            style: Theme.of(context).textTheme.labelLarge,
+                          ),
+                        ),
+                      ),
+                    if (value.profilePosts.size > 0)
+                      SliverList.builder(
+                        itemCount: value.profilePosts.size,
+                        itemBuilder: (_, index) {
+                          return _RecipeCard(
+                            post: Post(
+                              id: UniqueId(),
+                              owner: UniqueId(),
+                              data: [],
+                              likes: 0,
+                            ),
+                          );
+                        },
+                      ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
@@ -39,70 +89,69 @@ class _Buttons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const _ProfileBar(),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 16.0,
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: FilledButton(
-                  onPressed: () {
-                    //TODO: implement onEditProfile method
-                  },
-                  style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                      Colors.white,
-                    ),
-                  ),
-                  child: Text(
-                    'Edit Profile',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
-                  ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 16.0,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: FilledButton(
+              onPressed: () {
+                //TODO: implement onEditProfile method
+              },
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(
+                  Colors.white,
                 ),
               ),
-              const SizedBox(
-                width: 8.0,
+              child: Text(
+                'Edit Profile',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
               ),
-              Expanded(
-                child: FilledButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => const SettingsPage(),
-                      ),
-                    );
-                  },
-                  style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                      Colors.white,
-                    ),
+            ),
+          ),
+          const SizedBox(
+            width: 8.0,
+          ),
+          Expanded(
+            child: FilledButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const SettingsPage(),
                   ),
-                  child: Text(
-                    'Settings',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
-                  ),
+                );
+              },
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(
+                  Colors.white,
                 ),
               ),
-            ],
+              child: Text(
+                'Settings',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black),
+              ),
+            ),
           ),
-        ),
-        Text(
-          'Posts',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
-        ),
-        const SizedBox(height: 8.0),
-      ],
+        ],
+      ),
     );
   }
 }
 
 class _ProfileBar extends StatelessWidget {
-  const _ProfileBar();
+  final String avatar;
+  final int posts;
+  final int followers;
+  final int following;
+
+  const _ProfileBar({
+    required this.avatar,
+    required this.posts,
+    required this.followers,
+    required this.following,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -112,33 +161,34 @@ class _ProfileBar extends StatelessWidget {
           child: FittedBox(
             child: CircleAvatar(
               backgroundColor: Theme.of(context).colorScheme.primary,
+              backgroundImage: NetworkImage(avatar),
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           flex: 3,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Expanded(
                 child: _ProfilePin(
-                  value: '2',
+                  value: '$posts',
                   title: 'Posts',
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                 ),
               ),
               Expanded(
                 child: _ProfilePin(
-                  value: '2',
+                  value: '$followers',
                   title: 'Followers',
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                 ),
               ),
               Expanded(
                 child: _ProfilePin(
-                  value: '2',
+                  value: '$following',
                   title: 'Following',
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                 ),
               ),
             ],
