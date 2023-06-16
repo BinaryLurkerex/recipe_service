@@ -28,7 +28,7 @@ class ProfileWidget extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: _ProfileBar(
                           avatar: value.profile.avatarUrl,
-                          posts: value.profile.posts,
+                          posts: value.profile.posts.length,
                           followers: value.profile.followers,
                           following: value.profile.following,
                         ),
@@ -49,30 +49,26 @@ class ProfileWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (value.profilePosts.size == 0)
-                      Padding(
-                        padding: const EdgeInsets.all(32.0),
-                        child: Center(
-                          child: Text(
-                            'There`s no posts yet',
-                            style: Theme.of(context).textTheme.labelLarge,
-                          ),
-                        ),
-                      ),
-                    if (value.profilePosts.size > 0)
-                      SliverList.builder(
-                        itemCount: value.profilePosts.size,
-                        itemBuilder: (_, index) {
-                          return _RecipeCard(
-                            post: Post(
-                              id: UniqueId(),
-                              owner: UniqueId(),
-                              data: [],
-                              likes: 0,
-                            ),
-                          );
-                        },
-                      ),
+                    // if (value.profilePosts.size == 0)
+                    //   Padding(
+                    //     padding: const EdgeInsets.all(32.0),
+                    //     child: Center(
+                    //       child: Text(
+                    //         'There`s no posts yet',
+                    //         style: Theme.of(context).textTheme.labelLarge,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // if (value.profilePosts.size > 0)
+                    SliverList.builder(
+                      itemCount: value.profile.posts.length,
+                      itemBuilder: (_, index) {
+                        return _RecipeCard(
+                          profile: value.profile,
+                          post: value.profile.posts.elementAt(index),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),

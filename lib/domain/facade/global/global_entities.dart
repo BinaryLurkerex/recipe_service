@@ -10,7 +10,7 @@ class Profile with _$Profile implements Entity {
     required UniqueId id,
     required String username,
     required String avatarUrl,
-    required int posts,
+    required List<Post> posts,
     required int followers,
     required int following,
   }) = _Profile;
@@ -20,7 +20,6 @@ class Profile with _$Profile implements Entity {
 class Post with _$Post implements Entity {
   const factory Post({
     required UniqueId id,
-    required UniqueId owner,
     required List<PostData> data,
     required int likes,
   }) = _Post;

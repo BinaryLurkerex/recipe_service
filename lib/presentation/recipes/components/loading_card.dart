@@ -7,7 +7,7 @@ class LoadingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: CircularProgressIndicator(
-        strokeWidth: 1.0,
+        strokeWidth: 2.0,
       ),
     );
   }
